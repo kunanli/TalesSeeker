@@ -27,6 +27,11 @@ public class baseEventData : MonoBehaviour
     [DataMember]
     public EventCategory category;
     /// <summary>
+    /// pic
+    /// </summary>
+    [DataMember]
+    public string picPath;
+    /// <summary>
     /// bg
     /// </summary>
     [DataMember]
@@ -54,6 +59,8 @@ public class EventChoice
         /// Order Next Event ,if false will random
         /// </summary>
         public bool orderNextEvent;
+
+        public int orderEventNo = -1;
     }
 
     public EventChoiceResult ChoiceLeft;

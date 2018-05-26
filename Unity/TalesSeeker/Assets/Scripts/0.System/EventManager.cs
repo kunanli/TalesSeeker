@@ -75,4 +75,13 @@ public class EventManager : baseSingleton<EventManager>
                 break;
         }
     }
+
+    public void Next(int no)
+    {
+        if (!EventDataManager.Instance.Next(no))
+        {
+            Debug.Log("Loading faild!!!!!!!!");
+        }
+        nowEvent = no;
+    }
 }

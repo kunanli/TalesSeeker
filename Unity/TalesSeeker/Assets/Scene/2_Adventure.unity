@@ -423,8 +423,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69408f0fdb7c814189bd41f540ce4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardLimitY: 30
+  CardShowChoiceLimitX: 250
+  CardDecideLimitX: 450
+  CardMaxRotaionZ: 7
+  CardShowChoiceRotaionZ: 5
+  FadeInTime: 0.6
   ChoiceLeft: {fileID: 1084043981}
   ChoiceRight: {fileID: 1851410125}
+  EventReader: {fileID: 675852521}
 --- !u!114 &366543109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,7 +715,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 498504040}
   m_HandleRect: {fileID: 0}
@@ -769,6 +776,9 @@ MonoBehaviour:
   EventText: {fileID: 1133682346}
   EventChoiceTextLeft: {fileID: 1084043981}
   EventChoiceTextRight: {fileID: 1851410125}
+  HP: {fileID: 592618342}
+  MP: {fileID: 843290798}
+  guiEvent: {fileID: 0}
 --- !u!1 &702516908
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,25 +889,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7850b6fd328604399f71351474c469, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &840295079 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1539943696971014, guid: ac7850b6fd328604399f71351474c469,
-    type: 2}
-  m_PrefabInternal: {fileID: 840295078}
---- !u!114 &840295080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840295079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4dd58709b4e7342b95a30e3dc09a88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EventDataObject:
-  - {fileID: 1699512841550806, guid: 34b75742741157f449cabd0fef7656d8, type: 2}
-  - {fileID: 1738914558448390, guid: 2de7053027b3ba64f8fd889b22ca73d1, type: 2}
 --- !u!1 &843290796
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +959,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 702516909}
   m_HandleRect: {fileID: 0}

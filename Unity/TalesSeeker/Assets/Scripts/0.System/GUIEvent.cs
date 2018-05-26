@@ -23,8 +23,21 @@ public class GUIEvent : MonoBehaviour {
 
     public bool IsCanTrigger { get { return isCanTrigger; } }
 
+    public float widthscale { get { return Screen.width / ScreenWidth; } }
+    public float heighscale { get { return Screen.height / ScreenHeigh; } }
+
+    public float CardLimitY = 30f;
+    public float CardShowChoiceLimitX = 250;
+    public float CardDecideLimitX = 450;
+
+    public float CardMaxRotaionZ = 7;
+    public float CardShowChoiceRotaionZ = 5;
+
+    public float FadeInTime = 2.0f;
+
     public Text ChoiceLeft;
     public Text ChoiceRight;
+    public EventReader EventReader;
 
     #region フィールド
     Vector2 ScreenScale = new Vector2();
@@ -39,14 +52,26 @@ public class GUIEvent : MonoBehaviour {
 
     DragType dragType = DragType.None;
 
+    //componet
     RectTransform rectTransform;
 
+    /// <summary>
+    /// Is can interact
+    /// </summary>
     bool isCanTrigger = true;
-#endregion
+
+    /// <summary>
+    /// Is 
+    /// </summary>
+    bool isStartPlay = false;
+
+    float timer = 0;
+    #endregion
 
     // Use this for initialization
     void Start () {
 
+        //gather component
         rectTransform = this.gameObject.GetComponent<RectTransform>();
 
         OriPos = rectTransform.anchoredPosition;
@@ -56,13 +81,30 @@ public class GUIEvent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-        float widthscale = (Screen.width / ScreenWidth);
-        float heighscale = (Screen.height / ScreenHeigh);
-
         ScreenScale = new Vector2(widthscale , heighscale);
 
-        if (!isDrag)
+        if (isStartPlay)
+        {
+            if(timer < FadeInTime)
+            {
+                timer += Time.deltaTime;
+                float translation = 180 - (timer * 300 );
+                if (translation < 90)
+                {
+                    EventReader.ChangeBG2PIC();
+                }
+                rectTransform.localEulerAngles = new Vector3(0, translation, 0);
+                //image.Alpha(timer/ FadeInTime);
+            }
+            else
+            {
+                rectTransform.localEulerAngles = new Vector3(0, 0, 0);
+                SetCardEnd();
+            }
+            return;
+        }
+
+        if (!isDrag && !isStartPlay)
         {
             rectTransform.anchoredPosition = OriPos;
             rectTransform.localEulerAngles =  new Vector3(0, 0, 0);
@@ -71,6 +113,9 @@ public class GUIEvent : MonoBehaviour {
 
     public void OnPicDragBegin()
     {
+        if (!isCanTrigger)
+            return;
+
         isDrag = true;
         startDragPoint = Input.mousePosition;
     }
@@ -80,84 +125,100 @@ public class GUIEvent : MonoBehaviour {
     /// </summary>
     public void OnPicDrag()
     {
+        if (!isCanTrigger)
+            return;
+
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             //Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position); //觸控
         }
         var pervPosition = new Vector3();
 
-        if (pervPosition != Input.mousePosition)
+        var mousePosition = Input.mousePosition;
+
+        //check the mouse or point Reversal
+        if (pervPosition != mousePosition)
         {
             if ((dragType & DragType.Down) != 0)
             {
-                if (pervPosition.y < Input.mousePosition.y)
+                if (pervPosition.y < mousePosition.y)
                 {
-                    startDragPoint = Input.mousePosition;
+                    startDragPoint = mousePosition;
                 }
             }
             else if ((dragType & DragType.Up) != 0)
             {
-                if (pervPosition.y > Input.mousePosition.y)
+                if (pervPosition.y > mousePosition.y)
                 {
-                    startDragPoint = Input.mousePosition;
+                    startDragPoint = mousePosition;
                 }
             }
 
-            if (pervPosition.y > Input.mousePosition.y)
+            if (pervPosition.y > mousePosition.y)
             {
                 dragType = DragType.Down;
             }
-            if (pervPosition.y < Input.mousePosition.y)
+            if (pervPosition.y < mousePosition.y)
             {
                 dragType = DragType.Up;
             }
         }
 
         //1Frame prev position
-        pervPosition = Input.mousePosition;
-        var AddY = ((Input.mousePosition.y - startDragPoint.y  ) / ScreenScale.y) / 20;
+        pervPosition = mousePosition;
+        var AddY = ((mousePosition.y - startDragPoint.y  ) / ScreenScale.y) / 20;
 
-        //Limit
-        if (OriPos.y - rectTransform.anchoredPosition.y > 30 && AddY <0)
+        //Limit Card PosY
+        if (OriPos.y - rectTransform.anchoredPosition.y > CardLimitY && AddY <0)
         {
             AddY = 0;
         }
-        else if (OriPos.y - rectTransform.anchoredPosition.y < -30 && AddY > 0)
+        else if (OriPos.y - rectTransform.anchoredPosition.y < -CardLimitY && AddY > 0)
         {
             AddY = 0;
         }
 
         //X Rotation (Z)
-        var Xpoint = Input.mousePosition.x / ScreenScale.x;
+        //calc card rot Z
+        var Xpoint = mousePosition.x / ScreenScale.x;
         var AddX = (Xpoint - (ScreenWidth/2));
-        Debug.Log("Addx  " + AddX);
-        if (AddX < 250 && AddX > -250)
+        //Debug.Log("Addx  " + AddX);
+        if (AddX < CardShowChoiceLimitX && AddX > -CardShowChoiceLimitX)
         {
-            rotz = (AddX / 250) * 7f;
+            rotz = (AddX / CardShowChoiceLimitX) * CardMaxRotaionZ;
         }
         else
         {
             if (AddX > 0)
-                rotz = 7;
+                rotz = CardMaxRotaionZ;
             else if (AddX < 0)
-                rotz = -7;
+                rotz = -CardMaxRotaionZ;
         }
 
-        //choice
-        if (rotz > 5 || rotz < -5)
+        // show choice
+        if (rotz > CardShowChoiceRotaionZ || rotz < -CardShowChoiceRotaionZ)
         {
             if (rotz > 0)
             {
-                ChoiceLeft.color = new Color(ChoiceLeft.color.r, ChoiceLeft.color.g, ChoiceLeft.color.b, (rotz - 5) / 2);
+                ChoiceLeft.Alpha((rotz - 5) / 2);
             }
             else if (rotz < 0)
             {
-                ChoiceRight.color = new Color(ChoiceRight.color.r, ChoiceRight.color.g, ChoiceRight.color.b, -((rotz + 5) / 2));
+                ChoiceRight.Alpha(-((rotz + 5) / 2));
             }
         }
         else
         {
             resetChoice();
+        }
+
+        if (AddX > CardDecideLimitX )
+        {
+            EventReader.ToNext(EventReader.ChoiceType.Left);
+        }
+        else if ( AddX < -CardDecideLimitX)
+        {
+            EventReader.ToNext(EventReader.ChoiceType.Right);
         }
 
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x , rectTransform.anchoredPosition.y + (AddY));
@@ -166,17 +227,41 @@ public class GUIEvent : MonoBehaviour {
 
     public void OnPicDragEnd()
     {
+        if (!isCanTrigger)
+            return;
+
         isDrag = false;
         rotz = 0;
         resetChoice();
     }
+
+    public void SetCardStart()
+    {
+        isStartPlay = true;
+        isCanTrigger = false;
+
+        rectTransform.anchoredPosition = OriPos;
+        rectTransform.localEulerAngles = new Vector3(0, 180, 0);
+        resetChoice();
+        //image.Alpha(0);
+
+    }
+
+    public void SetCardEnd()
+    {
+        isCanTrigger = true;
+        isStartPlay = false;
+        timer = 0;
+    }
+
 
     /// <summary>
     /// Reset Choice alpha
     /// </summary>
     void resetChoice()
     {
-        ChoiceLeft.color = new Color(ChoiceLeft.color.r, ChoiceLeft.color.g, ChoiceLeft.color.b, 0);
-        ChoiceRight.color = new Color(ChoiceRight.color.r, ChoiceRight.color.g, ChoiceRight.color.b, 0);
+        ChoiceLeft.Alpha( 0);
+        ChoiceRight.Alpha( 0);
     }
+
 }

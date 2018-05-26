@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : baseSingleton<GameManager> {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Player MainPlayer;
+
+    public override void doStart()
+    {
+        base.doStart();
+
+        MainPlayer = GameObject.Find("Player").GetComponent<Player>();
+    }
+
+    public override void doUpdate()
+    {
+        base.doUpdate();
+    }
 }

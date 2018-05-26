@@ -53,7 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexNo: 0
   category: 0
-  bgPath: Art\Card\0_Event\testEvent\testEvent_bg01
+  picPath: Art\Card\0_Event\testEvent\testEvent_bg01
+  bgPath: Art\Card\1_UI\event_bg
   text:
   - prologue_start
   eventChoices:
@@ -61,7 +62,9 @@ MonoBehaviour:
       choiceText: choice1
       enemyDmg: -50
       orderNextEvent: 0
+      orderEventNo: 1
     ChoiceRight:
       choiceText: choice2
       enemyDmg: -100
       orderNextEvent: 0
+      orderEventNo: 1
