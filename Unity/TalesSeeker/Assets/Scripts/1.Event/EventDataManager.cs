@@ -11,7 +11,7 @@ public class EventDataManager : baseSingleton<EventDataManager> {
     public List<GameObject> removeEventList = new List<GameObject>();
 
     [SerializeField]
-    public List<GameObject> EventDataObject;
+    public List<baseEventData> EventDataObject;
 
     public override void doUpdate()
     {
@@ -28,15 +28,29 @@ public class EventDataManager : baseSingleton<EventDataManager> {
 
     public bool CheckLoad(int no)
     {
-        var parent = GameObject.FindObjectOfType<EventReader>();
-        if(parent)
+        if(no == -1)
         {
-            var eventObj = GameObject.Instantiate<GameObject>(EventDataObject[no], parent.transform);
-            var eventData = eventObj.GetComponent<baseEventData>();
-            parent.SetNextEvent(eventData);
-            nowEventList.Add(eventObj);
-            return true;
+            //randamlly , now just back to 0 by kao 20180521
+            no = 0;
         }
+
+        var parent = GameObject.FindObjectOfType<EventReader>();
+        if (parent)
+        {
+            foreach (var _event in EventDataObject)
+            {
+                if (_event.indexNo == no)
+                {
+                    var eventObj = GameObject.Instantiate<GameObject>(_event.gameObject, parent.transform);
+                    var eventData = eventObj.GetComponent<baseEventData>();
+                    parent.SetNextEvent(eventData);
+                    nowEventList.Add(eventObj);
+                    return true;
+                }
+            }
+        }
+
+        Debug.LogError("Cant find no." + no + " event at EventDataManager , Pls Check the prefabs");
         return false;
     }
 

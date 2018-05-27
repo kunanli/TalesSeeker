@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1738914558448390}
+  m_RootGameObject: {fileID: 1880358983300856}
   m_IsPrefabParent: 1
---- !u!1 &1738914558448390
+--- !u!1 &1880358983300856
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4802933544074148}
-  - component: {fileID: 114076928158347688}
+  - component: {fileID: 4340398887951414}
+  - component: {fileID: 114199756343138868}
   m_Layer: 0
-  m_Name: 00_Event_001_prologue_End
+  m_Name: 99_event_005_EL_monster_win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4802933544074148
+--- !u!4 &4340398887951414
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738914558448390}
+  m_GameObject: {fileID: 1880358983300856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,31 +40,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114076928158347688
+--- !u!114 &114199756343138868
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738914558448390}
+  m_GameObject: {fileID: 1880358983300856}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43b20b0e30df27f43b53f950e096bb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexNo: 1
-  category: 0
-  picPath: 
+  indexNo: 913
+  category: 3
+  picPath: Art\Card\0_Event\99_testEvent_ELShaddai\e3_luciferpv_1080201
   bgPath: Art\Card\1_UI\event_bg
   text:
-  - prologue_end
+  - win
   eventChoices:
     ChoiceLeft:
-      choiceText: choice2-2
+      choiceText: pice of cake
       enemyDmg: 0
-      orderNextEvent: 0
-      orderEventNo: 900
+      orderNextEvent: 1
+      orderEventNo: 915
     ChoiceRight:
-      choiceText: choice2-3
+      choiceText: ez
       enemyDmg: 0
-      orderNextEvent: 0
-      orderEventNo: 900
+      orderNextEvent: 1
+      orderEventNo: 915

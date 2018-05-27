@@ -62,12 +62,12 @@ public class EventReader : MonoBehaviour {
         switch (choice)
         {
             case ChoiceType.Left:
-                EventManager.Instance.Next(noEventData.eventChoices.ChoiceLeft.orderEventNo);
                 updateDmg(noEventData.eventChoices.ChoiceLeft);
+                EventManager.Instance.Next(noEventData.eventChoices.ChoiceLeft.orderEventNo);
                 break;
             case ChoiceType.Right:
-                EventManager.Instance.Next(noEventData.eventChoices.ChoiceRight.orderEventNo);
                 updateDmg(noEventData.eventChoices.ChoiceRight);
+                EventManager.Instance.Next(noEventData.eventChoices.ChoiceRight.orderEventNo);
                 break;
         }
     }

@@ -60,11 +60,11 @@ MonoBehaviour:
   eventChoices:
     ChoiceLeft:
       choiceText: choice1
-      enemyDmg: -50
+      enemyDmg: 0
       orderNextEvent: 0
       orderEventNo: 1
     ChoiceRight:
       choiceText: choice2
-      enemyDmg: -100
+      enemyDmg: 0
       orderNextEvent: 0
       orderEventNo: 1

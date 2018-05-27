@@ -65,6 +65,12 @@ public class GUIEvent : MonoBehaviour {
     /// </summary>
     bool isStartPlay = false;
 
+
+    /// <summary>
+    /// safe check
+    /// </summary>
+    bool onceChace = false;
+
     float timer = 0;
     #endregion
 
@@ -118,6 +124,7 @@ public class GUIEvent : MonoBehaviour {
 
         isDrag = true;
         startDragPoint = Input.mousePosition;
+        onceChace = false;
     }
 
     /// <summary>
@@ -125,7 +132,7 @@ public class GUIEvent : MonoBehaviour {
     /// </summary>
     public void OnPicDrag()
     {
-        if (!isCanTrigger)
+        if (!isCanTrigger || onceChace)
             return;
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
@@ -215,10 +222,12 @@ public class GUIEvent : MonoBehaviour {
         if (AddX > CardDecideLimitX )
         {
             EventReader.ToNext(EventReader.ChoiceType.Left);
+            onceChace = true;
         }
         else if ( AddX < -CardDecideLimitX)
         {
             EventReader.ToNext(EventReader.ChoiceType.Right);
+            onceChace = true;
         }
 
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x , rectTransform.anchoredPosition.y + (AddY));
@@ -233,6 +242,7 @@ public class GUIEvent : MonoBehaviour {
         isDrag = false;
         rotz = 0;
         resetChoice();
+        onceChace = false;
     }
 
     public void SetCardStart()
