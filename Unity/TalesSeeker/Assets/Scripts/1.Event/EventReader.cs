@@ -30,6 +30,7 @@ public class EventReader : MonoBehaviour {
     //temp 
     public Slider HP;
     public Slider MP;
+    public KarmaControl Karma;
     #endregion
     public GUIEvent guiEvent;
     Sprite Pic;
@@ -59,15 +60,33 @@ public class EventReader : MonoBehaviour {
     /// <param name="choice"></param>
     public void ToNext(ChoiceType choice)
     {
+        var choicesData = noEventData.eventChoices;
         switch (choice)
         {
             case ChoiceType.Left:
-                updateDmg(noEventData.eventChoices.ChoiceLeft);
-                EventManager.Instance.Next(noEventData.eventChoices.ChoiceLeft.orderEventNo);
+                updateDmg(choicesData.ChoiceLeft);
+                updateKarma(choicesData.ChoiceLeft);
+                if (choicesData.ChoiceLeft.orderNextIndex)
+                { 
+                    EventManager.Instance.Next(noEventData.EventNo, choicesData.ChoiceLeft.orderIndexNo);
+                }
+                else
+                {
+                    EventManager.Instance.Next(choicesData.ChoiceLeft.orderEventNo, 0);
+                }
+
                 break;
             case ChoiceType.Right:
-                updateDmg(noEventData.eventChoices.ChoiceRight);
-                EventManager.Instance.Next(noEventData.eventChoices.ChoiceRight.orderEventNo);
+                updateDmg(choicesData.ChoiceRight);
+                updateKarma(choicesData.ChoiceRight);
+                if (choicesData.ChoiceRight.orderNextIndex)
+                { 
+                    EventManager.Instance.Next(noEventData.EventNo, choicesData.ChoiceRight.orderIndexNo);
+                }
+                else
+                {
+                    EventManager.Instance.Next(choicesData.ChoiceRight.orderEventNo, 0);
+                }
                 break;
         }
     }
@@ -105,6 +124,28 @@ public class EventReader : MonoBehaviour {
 
         pl.playerParam.mp -= 20;
         MP.value = pl.playerParam.mp / pl.playerParam.Maxmp;
+    }
+
+    public void updateKarma(EventChoice.EventChoiceResult info)
+    {
+        var pl = GameManager.Instance.MainPlayer;
+        var karma = pl.playerParam.karma + info.karma;
+        if (karma < 0)
+        {
+            karma = 0;
+            Karma.SetValue(0);
+        }
+        else if (karma >= 100)
+        {
+            karma = 100;
+            Karma.SetValue(1);
+        }
+        else
+        {
+            Karma.SetValue(karma / pl.playerParam.MaxKarma);
+        }
+
+        pl.playerParam.karma = karma;
     }
 
 }

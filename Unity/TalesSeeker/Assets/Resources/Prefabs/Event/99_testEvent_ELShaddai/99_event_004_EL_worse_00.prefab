@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b20b0e30df27f43b53f950e096bb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexNo: 905
+  EventNo: 900
+  indexNo: 5
   category: 3
   picPath: Art\Card\0_Event\99_testEvent_ELShaddai\e3_luciferpv_1080068
   bgPath: Art\Card\1_UI\event_bg
@@ -61,10 +62,18 @@ MonoBehaviour:
     ChoiceLeft:
       choiceText: let go
       enemyDmg: 0
-      orderNextEvent: 1
-      orderEventNo: 910
+      karma: 10
+      money: 0
+      orderNextEvent: 0
+      orderEventNo: 0
+      orderNextIndex: 1
+      orderIndexNo: 10
     ChoiceRight:
       choiceText: let go
       enemyDmg: 0
-      orderNextEvent: 1
-      orderEventNo: 910
+      karma: -10
+      money: 0
+      orderNextEvent: 0
+      orderEventNo: 0
+      orderNextIndex: 1
+      orderIndexNo: 10

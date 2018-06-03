@@ -8,13 +8,13 @@ public class baseGUI : MonoBehaviour {
     public RectTransform RectTransform ;
 
 	// Use this for initialization
-	public void Start () {
+	public virtual void Start () {
         //gather component
 	    RectTransform = this.gameObject.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
-    public void Update () {
+    public virtual void Update () {
 		
 	}
 }

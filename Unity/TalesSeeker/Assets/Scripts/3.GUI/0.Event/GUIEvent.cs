@@ -40,6 +40,8 @@ public class GUIEvent : baseGUI
     public Text ChoiceRight;
     public EventReader EventReader;
 
+    public bool CanDragY;
+
     #region フィールド
     Vector2 ScreenScale = new Vector2();
 
@@ -73,7 +75,7 @@ public class GUIEvent : baseGUI
     #endregion
 
     // Use this for initialization
-    public void Start () {
+    public override void Start () {
         base.Start();
 
         OriPos = RectTransform.anchoredPosition;
@@ -82,7 +84,8 @@ public class GUIEvent : baseGUI
     }
 
     // Update is called once per frame
-    void Update() {
+    public override void Update() {
+        base.Update();
         
         ScreenScale = new Vector2(widthscale , heighscale);
 
@@ -140,46 +143,53 @@ public class GUIEvent : baseGUI
 
         var mousePosition = Input.mousePosition;
 
-        //check the mouse or point Reversal
-        if (pervPosition != mousePosition)
+        if (CanDragY)
         {
-            if ((dragType & DragType.Down) != 0)
+            //check the mouse or point Reversal
+            if (pervPosition != mousePosition)
             {
-                if (pervPosition.y < mousePosition.y)
+                if ((dragType & DragType.Down) != 0)
                 {
-                    startDragPoint = mousePosition;
+                    if (pervPosition.y < mousePosition.y)
+                    {
+                        startDragPoint = mousePosition;
+                    }
                 }
-            }
-            else if ((dragType & DragType.Up) != 0)
-            {
+                else if ((dragType & DragType.Up) != 0)
+                {
+                    if (pervPosition.y > mousePosition.y)
+                    {
+                        startDragPoint = mousePosition;
+                    }
+                }
+
                 if (pervPosition.y > mousePosition.y)
                 {
-                    startDragPoint = mousePosition;
+                    dragType = DragType.Down;
+                }
+
+                if (pervPosition.y < mousePosition.y)
+                {
+                    dragType = DragType.Up;
                 }
             }
 
-            if (pervPosition.y > mousePosition.y)
-            {
-                dragType = DragType.Down;
-            }
-            if (pervPosition.y < mousePosition.y)
-            {
-                dragType = DragType.Up;
-            }
-        }
+            //1Frame prev position
+            pervPosition = mousePosition;
+            var AddY = ((mousePosition.y - startDragPoint.y) / ScreenScale.y) / 20;
 
-        //1Frame prev position
-        pervPosition = mousePosition;
-        var AddY = ((mousePosition.y - startDragPoint.y  ) / ScreenScale.y) / 20;
+            //Limit Card PosY
+            if (OriPos.y - RectTransform.anchoredPosition.y > CardLimitY && AddY < 0)
+            {
+                AddY = 0;
+            }
+            else if (OriPos.y - RectTransform.anchoredPosition.y < -CardLimitY && AddY > 0)
+            {
+                AddY = 0;
+            }
 
-        //Limit Card PosY
-        if (OriPos.y - RectTransform.anchoredPosition.y > CardLimitY && AddY <0)
-        {
-            AddY = 0;
-        }
-        else if (OriPos.y - RectTransform.anchoredPosition.y < -CardLimitY && AddY > 0)
-        {
-            AddY = 0;
+                RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x,
+                    RectTransform.anchoredPosition.y + (AddY));
         }
 
         //X Rotation (Z)
@@ -227,7 +237,6 @@ public class GUIEvent : baseGUI
             onceChace = true;
         }
 
-        RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x , RectTransform.anchoredPosition.y + (AddY));
         RectTransform.localEulerAngles = new Vector3(0, 0, -rotz);
     }
 

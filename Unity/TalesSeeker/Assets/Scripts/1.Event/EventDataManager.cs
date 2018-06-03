@@ -26,12 +26,12 @@ public class EventDataManager : baseSingleton<EventDataManager> {
         }
     }
 
-    public bool CheckLoad(int no)
+    public bool CheckLoad(int eventNo , int indexNo)
     {
-        if(no == -1)
+        if(indexNo == -1 || indexNo == 0)
         {
             //randamlly , now just back to 0 by kao 20180521
-            no = 0;
+            indexNo = 0;
         }
 
         var parent = GameObject.FindObjectOfType<EventReader>();
@@ -39,22 +39,25 @@ public class EventDataManager : baseSingleton<EventDataManager> {
         {
             foreach (var _event in EventDataObject)
             {
-                if (_event.indexNo == no)
+                if (_event.EventNo == eventNo)
                 {
-                    var eventObj = GameObject.Instantiate<GameObject>(_event.gameObject, parent.transform);
-                    var eventData = eventObj.GetComponent<baseEventData>();
-                    parent.SetNextEvent(eventData);
-                    nowEventList.Add(eventObj);
-                    return true;
+                    if (_event.indexNo == indexNo)
+                    {
+                        var eventObj = GameObject.Instantiate<GameObject>(_event.gameObject, parent.transform);
+                        var eventData = eventObj.GetComponent<baseEventData>();
+                        parent.SetNextEvent(eventData);
+                        nowEventList.Add(eventObj);
+                        return true;
+                    }
                 }
             }
         }
 
-        Debug.LogError("Cant find no." + no + " event at EventDataManager , Pls Check the prefabs");
+        Debug.LogError("Cant find no." + eventNo + "::"+ indexNo + " event at EventDataManager , Pls Check the prefabs");
         return false;
     }
 
-    public bool Next(int no)
+    public bool Next(int eventNo, int indexNo)
     {
         foreach (var obj in nowEventList)
         {
@@ -62,7 +65,7 @@ public class EventDataManager : baseSingleton<EventDataManager> {
         }
         nowEventList.Clear();
 
-        var result = CheckLoad(no);
+        var result = CheckLoad(eventNo , indexNo);
         return result;
     }
 }

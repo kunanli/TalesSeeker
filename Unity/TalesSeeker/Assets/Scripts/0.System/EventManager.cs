@@ -63,7 +63,7 @@ public class EventManager : baseSingleton<EventManager>
                 {
                     //start with prologue
                     nowEvent = 0;
-                    if (!EventDataManager.Instance.CheckLoad(nowEvent))
+                    if (!EventDataManager.Instance.CheckLoad(nowEvent , 0))
                     {
                         Debug.Log("Loading faild!!!!!!!!");
                     }
@@ -76,12 +76,12 @@ public class EventManager : baseSingleton<EventManager>
         }
     }
 
-    public void Next(int no)
+    public void Next(int eventNo ,int indexNo)
     {
-        if (!EventDataManager.Instance.Next(no))
+        if (!EventDataManager.Instance.Next(eventNo , indexNo))
         {
             Debug.Log("Loading faild!!!!!!!!");
         }
-        nowEvent = no;
+        nowEvent = eventNo;
     }
 }

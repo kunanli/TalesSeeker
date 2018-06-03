@@ -13,19 +13,12 @@ public class AdsButton : baseGUI
 
     public GameObject ItemSlot;
 
-    // Use this for initialization
-    void Start()
+    public override void Start()
     {
         base.Start();
 
         //init
         RectTransform.anchoredPosition = HidePosX;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void OnMouseEnter()

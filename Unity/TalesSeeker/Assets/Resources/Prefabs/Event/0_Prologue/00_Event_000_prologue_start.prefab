@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b20b0e30df27f43b53f950e096bb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventNo: 0
   indexNo: 0
   category: 0
   picPath: Art\Card\0_Event\testEvent\testEvent_bg01
@@ -61,10 +62,18 @@ MonoBehaviour:
     ChoiceLeft:
       choiceText: choice1
       enemyDmg: 0
+      karma: 0
+      money: 0
       orderNextEvent: 0
-      orderEventNo: 1
+      orderEventNo: 0
+      orderNextIndex: 1
+      orderIndexNo: 1
     ChoiceRight:
       choiceText: choice2
       enemyDmg: 0
+      karma: 0
+      money: 0
       orderNextEvent: 0
-      orderEventNo: 1
+      orderEventNo: 0
+      orderNextIndex: 1
+      orderIndexNo: 1

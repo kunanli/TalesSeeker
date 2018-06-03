@@ -20,6 +20,12 @@ public class baseEventData : MonoBehaviour
     /// Event No.
     /// </summary>
     [DataMember]
+    public int EventNo;
+
+    /// <summary>
+    /// Event No.
+    /// </summary>
+    [DataMember]
     public int indexNo;
     /// <summary>
     /// category
@@ -55,12 +61,23 @@ public class EventChoice
         public string choiceText;
         public float enemyDmg;
 
+        public float karma;
+
+        public float money;
+
         /// <summary>
         /// Order Next Event ,if false will random
         /// </summary>
         public bool orderNextEvent;
 
         public int orderEventNo = -1;
+
+        /// <summary>
+        /// Order Next Index 
+        /// </summary>
+        public bool orderNextIndex;
+
+        public int orderIndexNo = -1;
     }
 
     public EventChoiceResult ChoiceLeft;
