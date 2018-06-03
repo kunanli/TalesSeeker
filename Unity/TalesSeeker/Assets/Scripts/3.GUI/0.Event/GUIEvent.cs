@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 using System;
 
-public class GUIEvent : MonoBehaviour {
+public class GUIEvent : baseGUI
+{
 
     public const float ScreenWidth = 1080;
     public const float ScreenHeigh = 1920;
@@ -52,9 +53,6 @@ public class GUIEvent : MonoBehaviour {
 
     DragType dragType = DragType.None;
 
-    //componet
-    RectTransform rectTransform;
-
     /// <summary>
     /// Is can interact
     /// </summary>
@@ -75,18 +73,17 @@ public class GUIEvent : MonoBehaviour {
     #endregion
 
     // Use this for initialization
-    void Start () {
+    public void Start () {
+        base.Start();
 
-        //gather component
-        rectTransform = this.gameObject.GetComponent<RectTransform>();
-
-        OriPos = rectTransform.anchoredPosition;
+        OriPos = RectTransform.anchoredPosition;
 
         resetChoice();
     }
 
     // Update is called once per frame
     void Update() {
+        
         ScreenScale = new Vector2(widthscale , heighscale);
 
         if (isStartPlay)
@@ -99,12 +96,12 @@ public class GUIEvent : MonoBehaviour {
                 {
                     EventReader.ChangeBG2PIC();
                 }
-                rectTransform.localEulerAngles = new Vector3(0, translation, 0);
+                RectTransform.localEulerAngles = new Vector3(0, translation, 0);
                 //image.Alpha(timer/ FadeInTime);
             }
             else
             {
-                rectTransform.localEulerAngles = new Vector3(0, 0, 0);
+                RectTransform.localEulerAngles = new Vector3(0, 0, 0);
                 SetCardEnd();
             }
             return;
@@ -112,8 +109,8 @@ public class GUIEvent : MonoBehaviour {
 
         if (!isDrag && !isStartPlay)
         {
-            rectTransform.anchoredPosition = OriPos;
-            rectTransform.localEulerAngles =  new Vector3(0, 0, 0);
+            RectTransform.anchoredPosition = OriPos;
+            RectTransform.localEulerAngles =  new Vector3(0, 0, 0);
         }
 	}
 
@@ -176,11 +173,11 @@ public class GUIEvent : MonoBehaviour {
         var AddY = ((mousePosition.y - startDragPoint.y  ) / ScreenScale.y) / 20;
 
         //Limit Card PosY
-        if (OriPos.y - rectTransform.anchoredPosition.y > CardLimitY && AddY <0)
+        if (OriPos.y - RectTransform.anchoredPosition.y > CardLimitY && AddY <0)
         {
             AddY = 0;
         }
-        else if (OriPos.y - rectTransform.anchoredPosition.y < -CardLimitY && AddY > 0)
+        else if (OriPos.y - RectTransform.anchoredPosition.y < -CardLimitY && AddY > 0)
         {
             AddY = 0;
         }
@@ -230,8 +227,8 @@ public class GUIEvent : MonoBehaviour {
             onceChace = true;
         }
 
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x , rectTransform.anchoredPosition.y + (AddY));
-        rectTransform.localEulerAngles = new Vector3(0, 0, -rotz);
+        RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x , RectTransform.anchoredPosition.y + (AddY));
+        RectTransform.localEulerAngles = new Vector3(0, 0, -rotz);
     }
 
     public void OnPicDragEnd()
@@ -250,8 +247,8 @@ public class GUIEvent : MonoBehaviour {
         isStartPlay = true;
         isCanTrigger = false;
 
-        rectTransform.anchoredPosition = OriPos;
-        rectTransform.localEulerAngles = new Vector3(0, 180, 0);
+        RectTransform.anchoredPosition = OriPos;
+        RectTransform.localEulerAngles = new Vector3(0, 180, 0);
         resetChoice();
         //image.Alpha(0);
 
