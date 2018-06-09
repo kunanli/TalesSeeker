@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     {
         public float Maxhp;
         public float Maxmp;
-        public float MaxKarma = 100;
+        public const float MaxKarma = 100;
 
         public float hp = 1000;
         public float mp = 1000;

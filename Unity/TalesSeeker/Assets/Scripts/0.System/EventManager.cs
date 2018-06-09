@@ -27,6 +27,9 @@ public class EventManager : baseSingleton<EventManager>
     #endregion
 
     #region field
+
+    public Player Player;
+
     EventStatue nowState;
     EventStatue nextStatue;
 
@@ -76,12 +79,31 @@ public class EventManager : baseSingleton<EventManager>
         }
     }
 
-    public void Next(int eventNo ,int indexNo)
+    public void Next(int eventNo, int indexNo)
     {
-        if (!EventDataManager.Instance.Next(eventNo , indexNo))
+        var karma = Player.playerParam.karma;
+        if (karma > 0 && karma < Player.PlayerParam.MaxKarma)
         {
-            Debug.Log("Loading faild!!!!!!!!");
+            if (!EventDataManager.Instance.Next(eventNo, indexNo))
+            {
+                Debug.Log("Loading faild!!!!!!!!");
+            }
+            nowEvent = eventNo;
         }
-        nowEvent = eventNo;
+        else
+        {
+            if (karma <= 0)
+            {
+                if (!EventDataManager.Instance.Next(EventDefine.BeastMode.EventNo, EventDefine.BeastMode.IndexNo))
+                {
+                    Debug.Log("Loading faild!!!!!!!!");
+                }
+                nowEvent = EventDefine.BeastMode.EventNo;
+            }
+            else if (karma >= Player.PlayerParam.MaxKarma)
+            {
+                //die
+            }
+        }
     }
 }

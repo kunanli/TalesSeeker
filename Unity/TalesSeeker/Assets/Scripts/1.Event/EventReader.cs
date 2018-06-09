@@ -142,7 +142,7 @@ public class EventReader : MonoBehaviour {
         }
         else
         {
-            Karma.SetValue(karma / pl.playerParam.MaxKarma);
+            Karma.SetValue(karma / Player.PlayerParam.MaxKarma);
         }
 
         pl.playerParam.karma = karma;

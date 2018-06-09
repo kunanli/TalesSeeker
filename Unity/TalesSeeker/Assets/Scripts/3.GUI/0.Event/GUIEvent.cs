@@ -42,6 +42,9 @@ public class GUIEvent : baseGUI
 
     public bool CanDragY;
 
+    public float SkillUIPressTime = 2;
+    public SkillControl SkillUI;
+
     #region フィールド
     Vector2 ScreenScale = new Vector2();
 
@@ -72,6 +75,9 @@ public class GUIEvent : baseGUI
     bool onceChace = false;
 
     float timer = 0;
+
+    float skillUItimer = 0;
+    private bool isCheckLongPress = false;
     #endregion
 
     // Use this for initialization
@@ -115,15 +121,27 @@ public class GUIEvent : baseGUI
             RectTransform.anchoredPosition = OriPos;
             RectTransform.localEulerAngles =  new Vector3(0, 0, 0);
         }
-	}
 
+        if (!isDrag && isCheckLongPress)
+        {
+           CheckPicLongPress();
+        }
+
+    }
+
+    #region  buttonEvent
     public void OnPicDragBegin()
     {
         if (!isCanTrigger)
             return;
+        isCheckLongPress = false;
 
         isDrag = true;
+#if UNITY_EDITOR
         startDragPoint = Input.mousePosition;
+#else
+        startDragPoint = Input.touches[0].position;
+#endif
         onceChace = false;
     }
 
@@ -135,13 +153,17 @@ public class GUIEvent : baseGUI
         if (!isCanTrigger || onceChace)
             return;
 
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            //Ray ray = Camera.main.ScreenPointToRay(Input.touches[0].position); //觸控
-        }
-        var pervPosition = new Vector3();
+        if (SkillUI.gameObject.activeInHierarchy)
+            return;
 
+        isCheckLongPress = false;
+#if UNITY_EDITOR
+        var pervPosition = new Vector3();
         var mousePosition = Input.mousePosition;
+#else
+        var pervPosition = new Vector2();
+        var mousePosition = Input.touches[0].position;
+#endif
 
         if (CanDragY)
         {
@@ -251,6 +273,29 @@ public class GUIEvent : baseGUI
         onceChace = false;
     }
 
+    public void OnPicLongPress()
+    {
+        isCheckLongPress = true;
+        if (skillUItimer < SkillUIPressTime)
+        {
+            skillUItimer += Time.deltaTime;
+        }
+        else
+        {
+            if (!SkillUI.gameObject.activeInHierarchy)
+            {
+                SkillUI.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void OnPicExit()
+    {
+        isCheckLongPress = false;
+        skillUItimer = 0;
+        SkillUI.gameObject.SetActive(false);
+    }
+    #endregion
     public void SetCardStart()
     {
         isStartPlay = true;
@@ -270,7 +315,6 @@ public class GUIEvent : baseGUI
         timer = 0;
     }
 
-
     /// <summary>
     /// Reset Choice alpha
     /// </summary>
@@ -280,4 +324,18 @@ public class GUIEvent : baseGUI
         ChoiceRight.Alpha( 0);
     }
 
+    public void CheckPicLongPress()
+    {
+        if (skillUItimer < SkillUIPressTime)
+        {
+            skillUItimer += Time.deltaTime;
+        }
+        else
+        {
+            if (!SkillUI.gameObject.activeInHierarchy)
+            {
+                SkillUI.gameObject.SetActive(true);
+            }
+        }
+    }
 }

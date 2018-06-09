@@ -28,7 +28,9 @@ public class AdsButton : baseGUI
 
     public void OnMouseExit()
     {
+#if UNITY_EDITOR
         RectTransform.anchoredPosition = HidePosX;
+#endif
     }
 
     public void OnMouseClick()
