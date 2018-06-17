@@ -58,6 +58,7 @@ MonoBehaviour:
   bgPath: Art\Card\back
   text:
   - You arrive at the center of the town and hear people yelling.
+  cardName: 
   eventChoices:
     ChoiceLeft:
       choiceText: 'Check out what happen '
@@ -66,8 +67,10 @@ MonoBehaviour:
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 1
+      orderNextIndex: 0
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
       choiceText: 'Check out what happen '
       enemyDmg: 0
@@ -77,3 +80,5 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []

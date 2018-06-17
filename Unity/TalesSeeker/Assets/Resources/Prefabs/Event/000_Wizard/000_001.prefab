@@ -70,6 +70,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
       choiceText: "\u7EE7\u7EED"
       enemyDmg: 0
@@ -79,3 +81,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

@@ -153,6 +153,15 @@ MonoBehaviour:
   - {fileID: 114628367628389050, guid: bab6d7d89202f4b47b2cb6c43fdec266, type: 2}
   - {fileID: 114628367628389050, guid: f67ecad7073e17540aa5242c46d40750, type: 2}
   - {fileID: 114628367628389050, guid: f8eb18bd26cffe84d85855ac80136e06, type: 2}
+  - {fileID: 114423326592441022, guid: a022b07d04633294dbd112e689b7042c, type: 2}
+  - {fileID: 114004708425636308, guid: 56a1c3d1f618ede4ebb2605c027a42ba, type: 2}
+  - {fileID: 114766708993705198, guid: e2fc951f297aba443932a12a1835dbbb, type: 2}
+  - {fileID: 114272201540365132, guid: 003accf4400aab34ea93a701992ff07c, type: 2}
+  - {fileID: 114088137460446086, guid: 0450aa2063c395a42b20b1065ba91ba3, type: 2}
+  SystemEventBattleResult:
+  - {fileID: 114103099238844012, guid: 3de9c4a7f4da09940a57ac1e73c61bc7, type: 2}
+  SystemEventDie: {fileID: 114705714699252840, guid: ade78ea9b52ddb840a2d81fb40ccc5cf,
+    type: 2}
 --- !u!114 &114544512898567896
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,8 +9,25 @@ public class EventDataManager : baseSingleton<EventDataManager> {
     public List<GameObject> nowEventList = new List<GameObject>();
     public List<GameObject> removeEventList = new List<GameObject>();
 
+    public  Dictionary<string , baseEventData> EventDataDictionary = new Dictionary<string, baseEventData>();
+
     [SerializeField]
     public List<baseEventData> EventDataObject;
+
+    public List<baseEventData> SystemEventBattleResult;
+
+    public baseEventData SystemEventDie;
+
+    public override void doStart()
+    {
+        base.doStart();
+
+        foreach (var eventData in EventDataObject)
+        {
+            var eventKey = eventData.EventNo.ToString() + "_" + eventData.indexNo.ToString();
+            EventDataDictionary.Add(eventKey, eventData);
+        }
+    }
 
     public override void doUpdate()
     {
@@ -56,6 +73,21 @@ public class EventDataManager : baseSingleton<EventDataManager> {
         return false;
     }
 
+    public bool CheckLoad(baseEventData eventdata)
+    {
+        var parent = GameObject.FindObjectOfType<EventReader>();
+        if (parent)
+        {
+            var eventObj = GameObject.Instantiate<GameObject>(eventdata.gameObject, parent.transform);
+            parent.SetNextEvent(eventdata);
+            nowEventList.Add(eventObj);
+            return true;
+        }
+
+        Debug.LogError("Cant find eventdata " + eventdata.name );
+        return false;
+    }
+
     public bool Next(int eventNo, int indexNo)
     {
         foreach (var obj in nowEventList)
@@ -66,5 +98,29 @@ public class EventDataManager : baseSingleton<EventDataManager> {
 
         var result = CheckLoad(eventNo , indexNo);
         return result;
+    }
+
+    public bool Next(baseEventData eventdata)
+    {
+        foreach (var obj in nowEventList)
+        {
+            removeEventList.Add(obj);
+        }
+        nowEventList.Clear();
+
+        var result = CheckLoad(eventdata);
+        return result;
+    }
+
+    /// <summary>
+    /// quick get eventdata
+    /// </summary>
+    /// <param name="EventNo"></param>
+    /// <param name="IndexNo"></param>
+    /// <returns></returns>
+    public baseEventData getEventData(int EventNo, int IndexNo)
+    {
+        var eventKey = EventNo.ToString() + "_" + IndexNo.ToString();
+        return EventDataDictionary[eventKey];
     }
 }
