@@ -66,9 +66,7 @@ public class EventManager : baseSingleton<EventManager>
                 {
                     //start with prologue
                     nowEvent = 0;
-                    //20180616
-                    //for KunAn : start with 1
-                    if (!EventDataManager.Instance.CheckLoad(nowEvent , 1))
+                    if (!EventDataManager.Instance.CheckLoad(nowEvent , 0))
                     {
                         Debug.Log("Loading faild!!!!!!!!");
                     }
