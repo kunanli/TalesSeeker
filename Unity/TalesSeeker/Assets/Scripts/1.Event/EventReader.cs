@@ -37,7 +37,7 @@ public class EventReader : MonoBehaviour {
 
     public void Start()
     {
-        guiEvent = EventPic.GetComponent<GUIEvent>();
+        //guiEvent = EventPic.GetComponent<GUIEvent>();
     }
 
     public void SetNextEvent(baseEventData _event)
