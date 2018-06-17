@@ -51,8 +51,8 @@ public class baseEventData : MonoBehaviour
     /// <summary>
     /// story or text
     /// </summary>
-    [DataMember, Multiline]
-    public string[] cardName;
+    [DataMember]
+    public string cardName;
 
     [DataMember]
     public EventChoice eventChoices;

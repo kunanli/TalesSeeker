@@ -24,6 +24,7 @@ public class EventReader : MonoBehaviour {
 
 
     public Text EventText;
+    public Text EventNameText;
     public Text EventChoiceTextLeft;
     public Text EventChoiceTextRight;
 
@@ -46,6 +47,7 @@ public class EventReader : MonoBehaviour {
         EventPic.sprite = Resources.Load<Sprite>(_event.bgPath);
         Pic = Resources.Load<Sprite>(_event.picPath);
         EventText.text = _event.text[0];
+        EventNameText.text = _event.cardName;
         textStepMax = _event.text.Length;
 
         EventChoiceTextLeft.text    = _event.eventChoices.ChoiceLeft.choiceText;

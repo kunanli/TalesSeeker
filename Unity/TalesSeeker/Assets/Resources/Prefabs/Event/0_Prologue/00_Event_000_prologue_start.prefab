@@ -58,6 +58,7 @@ MonoBehaviour:
   bgPath: Art\Card\1_UI\event_bg
   text:
   - prologue_start
+  cardName: 1
   eventChoices:
     ChoiceLeft:
       choiceText: choice1
