@@ -59,6 +59,7 @@ MonoBehaviour:
   text:
   - "\u4ED6\u8BF4: \u6211\u7684\u670B\u53CB\u2026\u4F60\u770B\u8D77\u6765\u5F88\u5F3A\u58EE\n\u6211\u662F\u4F1F\u5927\u7684\u6CD5\u5E08\u5FB7\u9C81\u65AF,
     \n\u6211\u60F3\u8981\u8DDF\u4F60\u51B3\u6597"
+  cardName: "\u68EE\u6797"
   eventChoices:
     ChoiceLeft:
       choiceText: "\u63A5\u53D7\u6311\u6218"
@@ -69,8 +70,10 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 3
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: "\u5FFD\u89C6\u4ED6\u8A00\u884C"
+      choiceText: "(\u5FC3\u60F3, \u4ED6\u53EF\u80FD\u6709\u75C5)"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -78,3 +81,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 4
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

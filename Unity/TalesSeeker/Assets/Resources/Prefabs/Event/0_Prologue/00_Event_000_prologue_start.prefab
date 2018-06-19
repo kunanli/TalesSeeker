@@ -69,6 +69,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 1
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
       choiceText: choice2
       enemyDmg: 0
@@ -78,3 +80,11 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 1
+      randomNextIndex: 0
+      randomIndexNo:
+      - eventNo: 0
+        randomWeight: 0
+      - eventNo: 0
+        randomWeight: 0
+      - eventNo: 0
+        randomWeight: 0

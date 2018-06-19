@@ -37,6 +37,9 @@ public class EventManager : baseSingleton<EventManager>
     /// 
     /// </summary>
     int nowEvent = -1;
+
+    List<int> onlyOneIndexList = new List<int>();
+    List<int> needIndexList = new List<int>();
     #endregion
 
     public override void doAwake()
@@ -81,8 +84,22 @@ public class EventManager : baseSingleton<EventManager>
         }
     }
 
-    public void Next(int eventNo, int indexNo)
+    public void Next(int eventNo, int indexNo )
     {
+        //change event, clear vitList
+        if (nowEvent != eventNo)
+        {
+            onlyOneIndexList.Clear();
+            needIndexList.Clear();
+        }
+
+        var hp = Player.playerParam.hp;
+        if (hp <= 0)
+        {
+            Die();
+            return;
+        }
+
         var karma = Player.playerParam.karma;
         if (karma > 0 && karma < Player.PlayerParam.MaxKarma)
         {
@@ -91,6 +108,11 @@ public class EventManager : baseSingleton<EventManager>
                 Debug.Log("Loading faild!!!!!!!!");
             }
             nowEvent = eventNo;
+
+            if(EventDataManager.Instance.getEventData(eventNo, indexNo).OnlyOneEvent)
+                onlyOneIndexList.Add(indexNo);
+
+            needIndexList.Add(indexNo);
         }
         else
         {
@@ -101,11 +123,43 @@ public class EventManager : baseSingleton<EventManager>
                     Debug.Log("Loading faild!!!!!!!!");
                 }
                 nowEvent = EventDefine.BeastMode.EventNo;
+
+                if (EventDataManager.Instance.getEventData(eventNo, indexNo).OnlyOneEvent)
+                    onlyOneIndexList.Add(indexNo);
+
+                needIndexList.Add(indexNo);
             }
             else if (karma >= Player.PlayerParam.MaxKarma)
             {
                 //die
+                Die();
             }
         }
+    }
+
+    public void BattleResult()
+    {
+        if (!EventDataManager.Instance.Next(EventDataManager.Instance.SystemEventBattleResult[0]))
+        {
+            Debug.Log("Battle Result Loading faild!!!!!!!!");
+        }
+    }
+
+    public void Die()
+    {
+        if (!EventDataManager.Instance.Next(EventDataManager.Instance.SystemEventDie))
+        {
+            Debug.Log("Die Loading faild!!!!!!!!");
+        }
+    }
+
+    public bool CheckIndexOnlyOne(int indexNO)
+    {
+        return onlyOneIndexList.Exists(a => a == indexNO);
+    }
+
+    public bool CheckIndexNeed(int indexNO)
+    {
+        return needIndexList.Exists(a => a == indexNO);
     }
 }

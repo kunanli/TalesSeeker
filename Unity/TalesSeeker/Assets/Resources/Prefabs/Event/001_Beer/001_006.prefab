@@ -57,24 +57,31 @@ MonoBehaviour:
   picPath: Art\Card\001_006
   bgPath: Art\Card\back
   text:
-  - You pass out after a few drinks, lose the contest and when you wake up you realize
-    you have been robbed.
+  - "\u4F60\u56E0\u9152\u9189\u6688\u5012\u2026\n\u7576\u4F60\u6E05\u9192\u8D77\u4F86\u5F8C\u767C\u73FE\u2026\u907A\u5931\u4E86\r\n"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
-      choiceText: Continue
+      choiceText: "\u9322\u5305\u907A\u5931\u4E86"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 1
-      orderEventNo: 0
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: Continue
+      choiceText: "\u67D0\u6A23\u9053\u5177\u907A\u5931\u4E86"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 1
-      orderEventNo: 0
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

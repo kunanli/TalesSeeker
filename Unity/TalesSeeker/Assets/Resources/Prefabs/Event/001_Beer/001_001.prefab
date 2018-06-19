@@ -57,10 +57,11 @@ MonoBehaviour:
   picPath: Art\Card\001_001
   bgPath: Art\Card\back
   text:
-  - You arrive at the center of the town and hear people yelling.
+  - "\u5230\u4E86\u57CE\u93AE\u4E2D\u5FC3, \u524D\u9762\u770B\u8D77\u4F86\u4F3C\u4E4E\u5F88\u71B1\u9B27"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
-      choiceText: 'Check out what happen '
+      choiceText: "\u524D\u5F80\u770B\u770B\u767C\u751F\u4EC0\u9EBC\u4E8B"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -68,8 +69,10 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: 'Check out what happen '
+      choiceText: "(\u597D\u5947) \u8D70\u904E\u53BB\u770B\u770B"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -77,3 +80,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

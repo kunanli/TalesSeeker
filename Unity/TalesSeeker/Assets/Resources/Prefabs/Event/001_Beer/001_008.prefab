@@ -57,24 +57,32 @@ MonoBehaviour:
   picPath: Art\Card\001_008
   bgPath: Art\Card\back
   text:
-  - You hit the contest announcer with a beer mug, and start a brawl in the middle
-    of the street
+  - "\u4F60\u96A8\u624B\u62FF\u4E86\u4E00\u500B\u5564\u9152\u676F\u5F80\u9019\u500B\u5927\u53D4\u4E00\u7838,
+    \u5169\u500B\u4EBA\u5927\u6253\u4E86\u8D77\u4F86"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
-      choiceText: Continue
+      choiceText: "\u7E7C\u7E8C"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 1
-      orderEventNo: 0
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 0
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: Continue
+      choiceText: "\u7E7C\u7E8C"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 1
-      orderEventNo: 0
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 0
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

@@ -57,24 +57,31 @@ MonoBehaviour:
   picPath: Art\Card\001_007
   bgPath: Art\Card\back
   text:
-  - 'Contestants start to pass out, you manage to keep on drinking and end up as a
-    winner '
+  - "\u6BD4\u8CFD\u904E\u4E86\u4E00\u6BB5\u6642\u9593\u2026\r\n\u53C3\u8CFD\u8005\u958B\u59CB\u559D\u5230\u6688\u5012,\r\n\u800C\u4F60\u6490\u5230\u5269\u4E0B\u6700\u5F8C\u5169\u4EBA\r\n"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
-      choiceText: Continue
+      choiceText: "\u62DA\u4E86 \u518D\u7E7C\u7E8C\u559D\u4E0B\u53BB"
       enemyDmg: 0
       karma: 0
       money: 0
-      orderNextEvent: 1
+      orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 0
-      orderIndexNo: 0
+      orderNextIndex: 1
+      orderIndexNo: 9
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: Continue
+      choiceText: "\u5BA3\u5E03 \u4F60\u559D\u4E0D\u4E0B\u4E86"
       enemyDmg: 0
       karma: 0
       money: 0
-      orderNextEvent: 1
+      orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 0
-      orderIndexNo: 0
+      orderNextIndex: 1
+      orderIndexNo: 10
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0
