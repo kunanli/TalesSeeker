@@ -57,9 +57,8 @@ MonoBehaviour:
   picPath: Art\Card\001_002
   bgPath: Art\Card\back
   text:
-  - "\u4F60\u770B\u5230\u805A\u6703\u7684\u4E2D\u9593\u6709\u500B\u5927\u9577\u684C,
-    \u4E0A\u9762\u7AD9\u8457\u4E00\u500B\u7537\u4EBA"
-  cardName: 
+  - "\u805A\u6703\u7684\u4E2D\u9593\u6709\u500B\u5927\u9577\u684C, \u4E0A\u9762\u7AD9\u8457\u4E00\u500B\u4EBA"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
       choiceText: "\u770B\u8D77\u4F86\u4F3C\u4E4E\u5F88\u6709\u8DA3"
@@ -73,7 +72,7 @@ MonoBehaviour:
       randomNextIndex: 0
       randomIndexNo: []
     ChoiceRight:
-      choiceText: "\u524D\u5F80\u4E00\u63A2\u7A76\u7ADF"
+      choiceText: "\u64E0\u9032\u53BB\u4E00\u63A2\u7A76\u7ADF"
       enemyDmg: 0
       karma: 0
       money: 0

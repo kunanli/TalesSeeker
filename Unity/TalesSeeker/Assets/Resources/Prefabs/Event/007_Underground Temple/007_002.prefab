@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4413069078129384}
   - component: {fileID: 114423326592441022}
   m_Layer: 0
-  m_Name: 007_006
+  m_Name: 007_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,16 +52,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EventNo: 7
-  indexNo: 6
+  indexNo: 2
   category: 0
-  picPath: Art\Card\007_006
+  picPath: Art\Card\007_002
   bgPath: Art\Card\back
   text:
-  - "\u4F60\u5411\u524D\u5F80\u6D1E\u7A74\u7684\u6DF1\u8655\u8D70"
+  - "\u662F\u500B\u96B1\u5BC6\u7684\u5730\u4E0B\u5BFA\u5EDF, \u770B\u8D77\u4F86\u5F88\u53EF\u7591"
   cardName: 1
   eventChoices:
     ChoiceLeft:
-      choiceText: choice1
+      choiceText: "\u9032\u53BB\u63A2\u7D22"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -78,13 +78,13 @@ MonoBehaviour:
       - indexNo: 0
         randomWeight: 33
     ChoiceRight:
-      choiceText: choice2
+      choiceText: "\u70BA\u4E86\u5B89\u5168\u9084\u662F\u96E2\u958B\u5427"
       enemyDmg: 0
       karma: 0
       money: 0
-      orderNextEvent: 0
+      orderNextEvent: 1
       orderEventNo: 0
-      orderNextIndex: 1
+      orderNextIndex: 0
       orderIndexNo: 3
       randomNextIndex: 0
       randomIndexNo:

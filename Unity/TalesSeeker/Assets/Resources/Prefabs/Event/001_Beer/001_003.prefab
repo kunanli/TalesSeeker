@@ -57,12 +57,11 @@ MonoBehaviour:
   picPath: Art\Card\001_003
   bgPath: Art\Card\back
   text:
-  - "The World\u2019s Drinking Beer Contest has started! The man ask you if you would
-    like to participate"
-  cardName: 
+  - "\u4E00\u500B\u5927\u53D4\u5927\u558A\u8457: \n\u4E16\u754C\u559D\u5564\u9152\u5927\u8CFD\u958B\u59CB\u5566!\r\n\u9806\u4FBF\u554F\u4F60\u8981\u4E0D\u8981\u53C3\u52A0?\r\n\n"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
-      choiceText: I can defeat anyone!
+      choiceText: "\u7576\u7136, \u6211\u53EF\u4EE5\u8F15\u6613\u5730\u6253\u6557\u4EFB\u4F55"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -73,7 +72,7 @@ MonoBehaviour:
       randomNextIndex: 0
       randomIndexNo: []
     ChoiceRight:
-      choiceText: You politely decline
+      choiceText: "\u4E0D\u662F\u5F88\u6703\u559D\u9152, \u79AE\u8C8C\u5730\u56DE\u7D55\u4E86"
       enemyDmg: 0
       karma: 0
       money: 0

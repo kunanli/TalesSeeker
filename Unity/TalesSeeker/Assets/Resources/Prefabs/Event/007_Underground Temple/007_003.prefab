@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1932063310613944}
+  m_RootGameObject: {fileID: 1106475303413580}
   m_IsPrefabParent: 1
---- !u!1 &1932063310613944
+--- !u!1 &1106475303413580
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4047994352018992}
-  - component: {fileID: 114004708425636308}
+  - component: {fileID: 4413069078129384}
+  - component: {fileID: 114423326592441022}
   m_Layer: 0
   m_Name: 007_003
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4047994352018992
+--- !u!4 &4413069078129384
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1932063310613944}
+  m_GameObject: {fileID: 1106475303413580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +40,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114004708425636308
+--- !u!114 &114423326592441022
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1932063310613944}
+  m_GameObject: {fileID: 1106475303413580}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43b20b0e30df27f43b53f950e096bb2e, type: 3}
@@ -54,21 +54,21 @@ MonoBehaviour:
   EventNo: 7
   indexNo: 3
   category: 0
-  picPath: Art\Card\0_Event\testEvent\testEvent_bg01
-  bgPath: Art\Card\1_UI\event_bg
+  picPath: Art\Card\007_003
+  bgPath: Art\Card\back
   text:
-  - A long and narrow slide leads you deeper to the darkness
-  cardName: 3
+  - "\u4E00\u689D\u7D30\u7D30\u9577\u9577\u7684\u9053\u8DEF, \u5F15\u9818\u8457\u4F60\u5230\u5730\u5E95\u7684\u66F4\u6DF1\u8655"
+  cardName: 1
   eventChoices:
     ChoiceLeft:
-      choiceText: choice1
+      choiceText: "\u7E7C\u7E8C"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
-      orderIndexNo: 1
+      orderIndexNo: 3
       randomNextIndex: 1
       randomIndexNo:
       - indexNo: 5
@@ -78,14 +78,14 @@ MonoBehaviour:
       - indexNo: 7
         randomWeight: 33
     ChoiceRight:
-      choiceText: choice2
+      choiceText: "\u7E7C\u7E8C"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
-      orderIndexNo: 1
+      orderIndexNo: 3
       randomNextIndex: 1
       randomIndexNo:
       - indexNo: 5
@@ -96,3 +96,4 @@ MonoBehaviour:
         randomWeight: 33
   needIndexNo: 
   OnlyOneEvent: 0
+  ShowBattleResult: 0

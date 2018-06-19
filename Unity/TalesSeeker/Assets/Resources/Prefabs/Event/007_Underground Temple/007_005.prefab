@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1105124215403844}
+  m_RootGameObject: {fileID: 1106475303413580}
   m_IsPrefabParent: 1
---- !u!1 &1105124215403844
+--- !u!1 &1106475303413580
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4169678949370368}
-  - component: {fileID: 114766708993705198}
+  - component: {fileID: 4413069078129384}
+  - component: {fileID: 114423326592441022}
   m_Layer: 0
   m_Name: 007_005
   m_TagString: Untagged
@@ -27,12 +27,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4169678949370368
+--- !u!4 &4413069078129384
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1105124215403844}
+  m_GameObject: {fileID: 1106475303413580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,12 +40,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114766708993705198
+--- !u!114 &114423326592441022
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1105124215403844}
+  m_GameObject: {fileID: 1106475303413580}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43b20b0e30df27f43b53f950e096bb2e, type: 3}
@@ -54,14 +54,14 @@ MonoBehaviour:
   EventNo: 7
   indexNo: 5
   category: 0
-  picPath: Art\Card\0_Event\testEvent\testEvent_bg01
-  bgPath: Art\Card\1_UI\event_bg
+  picPath: Art\Card\007_005
+  bgPath: Art\Card\back
   text:
-  - There are two paths ahead in front of you
-  cardName: 5
+  - "\u4F60\u524D\u9762\u6709\u5169\u689D\u8DEF"
+  cardName: 1
   eventChoices:
     ChoiceLeft:
-      choiceText: choice1
+      choiceText: "\u8D70\u5DE6\u908A"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -70,9 +70,15 @@ MonoBehaviour:
       orderNextIndex: 1
       orderIndexNo: 3
       randomNextIndex: 0
-      randomIndexNo: []
+      randomIndexNo:
+      - indexNo: 0
+        randomWeight: 33
+      - indexNo: 0
+        randomWeight: 33
+      - indexNo: 0
+        randomWeight: 33
     ChoiceRight:
-      choiceText: choice2
+      choiceText: "\u8D70\u53F3\u908A"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -81,4 +87,13 @@ MonoBehaviour:
       orderNextIndex: 1
       orderIndexNo: 3
       randomNextIndex: 0
-      randomIndexNo: []
+      randomIndexNo:
+      - indexNo: 0
+        randomWeight: 33
+      - indexNo: 0
+        randomWeight: 33
+      - indexNo: 0
+        randomWeight: 33
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

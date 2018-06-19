@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4413069078129384}
   - component: {fileID: 114423326592441022}
   m_Layer: 0
-  m_Name: 007_006
+  m_Name: 007_010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,12 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EventNo: 7
-  indexNo: 6
+  indexNo: 10
   category: 0
-  picPath: Art\Card\007_006
+  picPath: Art\Card\007_010
   bgPath: Art\Card\back
   text:
-  - "\u4F60\u5411\u524D\u5F80\u6D1E\u7A74\u7684\u6DF1\u8655\u8D70"
+  - "After reaching the far edge of the forest, \nthere is rocky cave entrance\n"
   cardName: 1
   eventChoices:
     ChoiceLeft:

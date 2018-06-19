@@ -58,7 +58,7 @@ MonoBehaviour:
   bgPath: Art\Card\back
   text:
   - "\u5230\u4E86\u57CE\u93AE\u4E2D\u5FC3, \u524D\u9762\u770B\u8D77\u4F86\u4F3C\u4E4E\u5F88\u71B1\u9B27"
-  cardName: 
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
       choiceText: "\u524D\u5F80\u770B\u770B\u767C\u751F\u4EC0\u9EBC\u4E8B"

@@ -57,10 +57,11 @@ MonoBehaviour:
   picPath: Art\Card\001_004
   bgPath: Art\Card\back
   text:
-  - The Contest Begins!
+  - "\u559D\u5564\u9152\u5927\u8CFD\u958B\u59CB!"
+  cardName: "\u57CE\u93AE"
   eventChoices:
     ChoiceLeft:
-      choiceText: 'Drink as fast as you can '
+      choiceText: "\u4EE5\u4EBA\u985E\u5DF2\u77E5\u6700\u5FEB\u7684\u901F\u5EA6\u559D"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -68,8 +69,10 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 6
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: You take it easy with smile
+      choiceText: "\u6162\u6162\u559D\u4E00\u908A\u559D\u4E00\u908A\u50BB\u7B11"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -77,3 +80,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 7
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0
