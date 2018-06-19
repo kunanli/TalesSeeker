@@ -57,10 +57,12 @@ MonoBehaviour:
   picPath: Art\Card\001_002
   bgPath: Art\Card\back
   text:
-  - You see a long table in the middle of the street and a man in top of it.
+  - "\u4F60\u770B\u5230\u805A\u6703\u7684\u4E2D\u9593\u6709\u500B\u5927\u9577\u684C,
+    \u4E0A\u9762\u7AD9\u8457\u4E00\u500B\u7537\u4EBA"
+  cardName: 
   eventChoices:
     ChoiceLeft:
-      choiceText: Looks interesting
+      choiceText: "\u770B\u8D77\u4F86\u4F3C\u4E4E\u5F88\u6709\u8DA3"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -68,8 +70,10 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 3
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: Won't hurt to check it out
+      choiceText: "\u524D\u5F80\u4E00\u63A2\u7A76\u7ADF"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -77,3 +81,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 3
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

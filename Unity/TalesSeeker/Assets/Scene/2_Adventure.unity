@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -430,12 +430,12 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1010
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -455,7 +455,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -465,7 +465,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -665,7 +665,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 03d95eb83a8fda6419cce1053047b5bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b688f5fbfde70f544930ebf45c2abbee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1404,7 +1404,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8e24a973488ca394ea03636bb993bd9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b688f5fbfde70f544930ebf45c2abbee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2407,7 +2407,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 988156569}
   m_HandleRect: {fileID: 988156568}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2708,12 +2708,12 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 730
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -2733,7 +2733,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -2743,7 +2743,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -3303,12 +3303,12 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -3328,7 +3328,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -3338,7 +3338,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -3674,12 +3674,12 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 170
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -3699,7 +3699,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
@@ -3709,7 +3709,7 @@ Prefab:
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224855842913392164, guid: 09f2313d6ed082047b74cc6abd0c11d9,
         type: 2}

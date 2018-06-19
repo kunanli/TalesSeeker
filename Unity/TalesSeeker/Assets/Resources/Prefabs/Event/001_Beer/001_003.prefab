@@ -59,9 +59,10 @@ MonoBehaviour:
   text:
   - "The World\u2019s Drinking Beer Contest has started! The man ask you if you would
     like to participate"
+  cardName: 
   eventChoices:
     ChoiceLeft:
-      choiceText: 'I can defeat anyone in a drinking contest! '
+      choiceText: I can defeat anyone!
       enemyDmg: 0
       karma: 0
       money: 0
@@ -69,6 +70,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 4
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
       choiceText: You politely decline
       enemyDmg: 0
@@ -78,3 +81,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 5
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0

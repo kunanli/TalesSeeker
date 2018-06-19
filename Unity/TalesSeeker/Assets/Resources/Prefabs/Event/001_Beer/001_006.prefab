@@ -59,9 +59,10 @@ MonoBehaviour:
   text:
   - You pass out after a few drinks, lose the contest and when you wake up you realize
     you have been robbed.
+  cardName: 
   eventChoices:
     ChoiceLeft:
-      choiceText: Continue
+      choiceText: How could it happen
       enemyDmg: 0
       karma: 0
       money: 0
@@ -69,8 +70,10 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 0
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
-      choiceText: Continue
+      choiceText: No way...
       enemyDmg: 0
       karma: 0
       money: 0
@@ -78,3 +81,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 0
       orderIndexNo: 2
+      randomNextIndex: 0
+      randomIndexNo: []
+  needIndexNo: 
+  OnlyOneEvent: 0
+  ShowBattleResult: 0
