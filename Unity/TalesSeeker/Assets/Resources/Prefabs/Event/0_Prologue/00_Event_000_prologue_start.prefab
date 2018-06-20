@@ -58,6 +58,7 @@ MonoBehaviour:
   bgPath: Art\Card\1_UI\event_bg
   text:
   - prologue_start
+  cardName: 1
   eventChoices:
     ChoiceLeft:
       choiceText: choice1
@@ -68,6 +69,8 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 1
+      randomNextIndex: 0
+      randomIndexNo: []
     ChoiceRight:
       choiceText: choice2
       enemyDmg: 0
@@ -77,3 +80,11 @@ MonoBehaviour:
       orderEventNo: 0
       orderNextIndex: 1
       orderIndexNo: 1
+      randomNextIndex: 0
+      randomIndexNo:
+      - eventNo: 0
+        randomWeight: 0
+      - eventNo: 0
+        randomWeight: 0
+      - eventNo: 0
+        randomWeight: 0

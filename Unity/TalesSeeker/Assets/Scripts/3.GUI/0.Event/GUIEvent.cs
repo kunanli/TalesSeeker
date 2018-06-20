@@ -37,7 +37,9 @@ public class GUIEvent : baseGUI
     public float FadeInTime = 2.0f;
 
     public Text ChoiceLeft;
+    public Image ChoiceLeftBG;
     public Text ChoiceRight;
+    public Image ChoiceRightBG;
     public EventReader EventReader;
 
     public bool CanDragY;
@@ -236,11 +238,15 @@ public class GUIEvent : baseGUI
         {
             if (rotz > 0)
             {
-                ChoiceLeft.Alpha((rotz - 5) / 2);
+                ChoiceLeft.gameObject.SetActive(true);
+                ChoiceLeft.rectTransform.localEulerAngles = new Vector3(0, 0, +rotz);
+                ChoiceLeftBG.gameObject.SetActive(true);
             }
             else if (rotz < 0)
             {
-                ChoiceRight.Alpha(-((rotz + 5) / 2));
+                ChoiceRight.gameObject.SetActive(true);
+                ChoiceRight.rectTransform.localEulerAngles = new Vector3(0, 0, +rotz);
+                ChoiceRightBG.gameObject.SetActive(true);
             }
         }
         else
@@ -320,8 +326,10 @@ public class GUIEvent : baseGUI
     /// </summary>
     void resetChoice()
     {
-        ChoiceLeft.Alpha( 0);
-        ChoiceRight.Alpha( 0);
+        ChoiceLeft.gameObject.SetActive(false);
+        ChoiceLeftBG.gameObject.SetActive(false);
+        ChoiceRight.gameObject.SetActive(false);
+        ChoiceRightBG.gameObject.SetActive(false);
     }
 
     public void CheckPicLongPress()

@@ -117,6 +117,7 @@ MonoBehaviour:
     Maxmp: 0
     hp: 1000
     mp: 1000
+    karma: 50
 --- !u!114 &114541652772475884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -132,19 +133,39 @@ MonoBehaviour:
   removeEventList: []
   EventDataObject:
   - {fileID: 114628367628389050, guid: 34b75742741157f449cabd0fef7656d8, type: 2}
-  - {fileID: 114076928158347688, guid: 2de7053027b3ba64f8fd889b22ca73d1, type: 2}
-  - {fileID: 114505102260797162, guid: fd29e9bc181730e4aa0d1a7c5c78cefa, type: 2}
-  - {fileID: 114394156852016436, guid: 09d2d252a7673794aabe237806edaaed, type: 2}
-  - {fileID: 114895705904091310, guid: 2edf20f57cd2ee54998a8cfd67736e56, type: 2}
-  - {fileID: 114043906485935644, guid: 14a79cde8afd1a6479e52cc86d569c13, type: 2}
-  - {fileID: 114045341291044616, guid: ccb2f65d8f9472346abd9135d9971909, type: 2}
-  - {fileID: 114913954621233174, guid: fc9d776cc13a89b4882105d85d05bc3d, type: 2}
-  - {fileID: 114951044812184398, guid: 3b9bba263fb54d8498e944938e328e88, type: 2}
-  - {fileID: 114610429070709030, guid: 55d438c3893d6784794790c5077120ce, type: 2}
-  - {fileID: 114204562337447498, guid: 607497ee94a6bca439923d844de43bfd, type: 2}
-  - {fileID: 114199756343138868, guid: fe0ccdb9be63e6249b5bf101987b2dc2, type: 2}
-  - {fileID: 114408324019844654, guid: 888bedc0f0efbd0498cd3764f4d54a6a, type: 2}
-  - {fileID: 114857779354399708, guid: bf3753e705b8cec46863a51f9fe7db12, type: 2}
+  - {fileID: 114628367628389050, guid: a38a569a0e23d7642b6d23fe5c6247fb, type: 2}
+  - {fileID: 114628367628389050, guid: a2b10dae3ae608a44bdfbbf85a125805, type: 2}
+  - {fileID: 114628367628389050, guid: b378867f04ca0b1458c640b894ca2d78, type: 2}
+  - {fileID: 114628367628389050, guid: a98b11e05c65fcd45b2b99f156df65af, type: 2}
+  - {fileID: 114628367628389050, guid: 9f6f9089a40dd59429bb8e4bc50e91ae, type: 2}
+  - {fileID: 114628367628389050, guid: 832fe043c94f9874f81a6dc6803c3b27, type: 2}
+  - {fileID: 114628367628389050, guid: e3481db92060d9b46b6088754c535e6c, type: 2}
+  - {fileID: 114628367628389050, guid: 10ef0417d08587d4a9edc00c170e7877, type: 2}
+  - {fileID: 114628367628389050, guid: ad67377e30b58ed4f83934a411e4c40b, type: 2}
+  - {fileID: 114628367628389050, guid: fae3abf43f0f1ee47a8b1aea04f315bf, type: 2}
+  - {fileID: 114628367628389050, guid: 2bbe753f2e612564c9fa715c46c4f22c, type: 2}
+  - {fileID: 114628367628389050, guid: 75c3d680c9497d64e9d7d55233c10cfd, type: 2}
+  - {fileID: 114628367628389050, guid: ceef665b736f1a64d8c6d5cb3e6a4cb7, type: 2}
+  - {fileID: 114628367628389050, guid: 1d8e1c4e616f3e2479cd2650b72b8626, type: 2}
+  - {fileID: 114628367628389050, guid: adadf510a62848846b939792c2f58c8f, type: 2}
+  - {fileID: 114628367628389050, guid: f515a92dc084b0e4685c951b2b6bd8e2, type: 2}
+  - {fileID: 114628367628389050, guid: 1fb39be03ab529f4ba0344389b930c31, type: 2}
+  - {fileID: 114628367628389050, guid: bab6d7d89202f4b47b2cb6c43fdec266, type: 2}
+  - {fileID: 114628367628389050, guid: f67ecad7073e17540aa5242c46d40750, type: 2}
+  - {fileID: 114628367628389050, guid: f8eb18bd26cffe84d85855ac80136e06, type: 2}
+  - {fileID: 114628367628389050, guid: a4cf3a91ed270d640870763a36c1debc, type: 2}
+  - {fileID: 114628367628389050, guid: 5cca87a9260141d409813bfa06882e65, type: 2}
+  - {fileID: 114423326592441022, guid: eed5f32603c025849b4aa1b83318ff63, type: 2}
+  - {fileID: 114423326592441022, guid: 05964c66a017c3140873bef3c83a1931, type: 2}
+  - {fileID: 114423326592441022, guid: c3d171e885c51164b9471aa995fb0dc6, type: 2}
+  - {fileID: 114423326592441022, guid: 66a99758591c9fa4d8facb52be57ccf7, type: 2}
+  - {fileID: 114423326592441022, guid: 3e6cd2fb88540774e90671ec770d706c, type: 2}
+  - {fileID: 114423326592441022, guid: 9351735cf30151845824733496de0150, type: 2}
+  - {fileID: 114423326592441022, guid: f5b66decd9c3e8e4f93c2c2a2624169a, type: 2}
+  SystemEventBattleResult:
+  - {fileID: 114103099238844012, guid: 3de9c4a7f4da09940a57ac1e73c61bc7, type: 2}
+  SystemEventDie: {fileID: 114705714699252840, guid: ade78ea9b52ddb840a2d81fb40ccc5cf,
+    type: 2}
 --- !u!114 &114544512898567896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,3 +189,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae54489d84388b942847e95877953812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 114094689285558686}

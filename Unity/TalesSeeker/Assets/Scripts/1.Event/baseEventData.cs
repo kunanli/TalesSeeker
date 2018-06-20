@@ -1,7 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using System.Runtime.Serialization;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using Random = UnityEngine.Random;
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(baseEventData))]
+public class baseEventDataEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        //not so important ,do it late
+        base.OnInspectorGUI();
+        /*
+        var myScript = target as baseEventData;
+
+        myScript.eventChoices.ChoiceLeft.orderNextIndex =
+            EditorGUILayout.Toggle("orderNextIndex", myScript.eventChoices.ChoiceLeft.orderNextIndex);
+
+        using (var group =
+            new EditorGUILayout.FadeGroupScope(Convert.ToSingle(myScript.eventChoices.ChoiceLeft.orderNextIndex)))
+        {
+            if (group.visible == true)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PrefixLabel("Text");
+                myScript.eventChoices.ChoiceLeft.orderIndexNo =
+                    EditorGUILayout.IntField(myScript.eventChoices.ChoiceLeft.orderIndexNo);
+            }
+        }*/
+    }
+}
+
+#endif
 
 public class baseEventData : MonoBehaviour
 {
@@ -45,11 +80,26 @@ public class baseEventData : MonoBehaviour
     /// <summary>
     /// story or text
     /// </summary>
-    [DataMember]
+    [DataMember,Multiline]
     public string[] text;
+
+    /// <summary>
+    /// story or text
+    /// </summary>
+    [DataMember]
+    public string cardName;
 
     [DataMember]
     public EventChoice eventChoices;
+
+    [DataMember]
+    public List<int> needIndexNo;
+
+    [DataMember]
+    public bool OnlyOneEvent;
+
+    [DataMember]
+    public bool ShowBattleResult;
 }
 
 [System.Serializable]
@@ -58,6 +108,14 @@ public class EventChoice
     [System.Serializable]
     public class EventChoiceResult
     {
+        [System.Serializable]
+        public class RandomIndexSetting
+        {
+            public int indexNo;
+
+            public float randomWeight;
+        }
+
         public string choiceText;
         public float enemyDmg;
 
@@ -78,9 +136,14 @@ public class EventChoice
         public bool orderNextIndex;
 
         public int orderIndexNo = -1;
+
+        public bool randomNextIndex;
+        public List<RandomIndexSetting> randomIndexNo = new List<RandomIndexSetting>();
+
     }
 
     public EventChoiceResult ChoiceLeft;
 
     public EventChoiceResult ChoiceRight;
 }
+
