@@ -57,43 +57,43 @@ MonoBehaviour:
   picPath: Art\Card\007_010
   bgPath: Art\Card\back
   text:
-  - "After reaching the far edge of the forest, \nthere is rocky cave entrance\n"
-  cardName: 1
+  - "\u4F60\u5411\u5C4D\u9AD4\u8868\u9054\u4E86\u4F60\u7684\u656C\u610F"
+  cardName: "\u5730\u4E0B\u8FF7\u5BAE"
   eventChoices:
     ChoiceLeft:
-      choiceText: choice1
+      choiceText: "\u4E00\u6703\u518D\u60F3\u770B\u770B\u5427"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 1
-      orderIndexNo: 3
-      randomNextIndex: 0
+      orderNextIndex: 0
+      orderIndexNo: 0
+      randomNextIndex: 1
       randomIndexNo:
-      - indexNo: 0
+      - indexNo: 4
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 5
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 6
         randomWeight: 33
     ChoiceRight:
-      choiceText: choice2
+      choiceText: "\u4E0D\u77E5\u9053"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 1
-      orderIndexNo: 3
-      randomNextIndex: 0
+      orderNextIndex: 0
+      orderIndexNo: 0
+      randomNextIndex: 1
       randomIndexNo:
-      - indexNo: 0
+      - indexNo: 4
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 5
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 6
         randomWeight: 33
   needIndexNo: 
-  OnlyOneEvent: 0
+  OnlyOneEvent: 1
   ShowBattleResult: 0

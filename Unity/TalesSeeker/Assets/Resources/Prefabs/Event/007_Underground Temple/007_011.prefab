@@ -57,43 +57,43 @@ MonoBehaviour:
   picPath: Art\Card\007_011
   bgPath: Art\Card\back
   text:
-  - "After reaching the far edge of the forest, \nthere is rocky cave entrance\n"
-  cardName: 1
+  - "\u53C8\u56DE\u5230\u4E86\u6709\u5C4D\u9AD4\u7684\u623F\u9593, \u9019\u9762\u7246\u5F8C\u9762\u597D\u50CF\u6709\u6771\u897F\u2026\u8981\u4E0D\u8981\u8A66\u8A66\u770B"
+  cardName: "\u5730\u4E0B\u8FF7\u5BAE"
   eventChoices:
     ChoiceLeft:
-      choiceText: choice1
+      choiceText: "\u7528\u8EAB\u9AD4\u885D\u649E"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 1
-      orderIndexNo: 3
+      orderIndexNo: 12
       randomNextIndex: 0
       randomIndexNo:
-      - indexNo: 0
+      - indexNo: 4
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 5
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 6
         randomWeight: 33
     ChoiceRight:
-      choiceText: choice2
+      choiceText: "\u7528\u6B66\u5668\u6253\u7834"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 1
-      orderIndexNo: 3
+      orderIndexNo: 13
       randomNextIndex: 0
       randomIndexNo:
-      - indexNo: 0
+      - indexNo: 4
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 5
         randomWeight: 33
-      - indexNo: 0
+      - indexNo: 6
         randomWeight: 33
-  needIndexNo: 
-  OnlyOneEvent: 0
+  needIndexNo: 07000000
+  OnlyOneEvent: 1
   ShowBattleResult: 0

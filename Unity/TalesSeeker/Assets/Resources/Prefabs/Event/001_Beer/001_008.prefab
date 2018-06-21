@@ -59,7 +59,7 @@ MonoBehaviour:
   text:
   - "\u4F60\u96A8\u624B\u62FF\u4E86\u4E00\u500B\u5564\u9152\u676F\u5F80\u9019\u500B\u5927\u53D4\u4E00\u7838,
     \u5169\u500B\u4EBA\u5927\u6253\u4E86\u8D77\u4F86"
-  cardName: "\u57CE\u93AE"
+  cardName: "\u57CE\u93AE\u4E2D\u5FC3"
   eventChoices:
     ChoiceLeft:
       choiceText: "\u7E7C\u7E8C"

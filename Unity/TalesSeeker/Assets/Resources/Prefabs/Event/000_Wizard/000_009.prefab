@@ -79,7 +79,7 @@ MonoBehaviour:
       orderNextEvent: 1
       orderEventNo: 0
       orderNextIndex: 0
-      orderIndexNo: 11
+      orderIndexNo: 0
       randomNextIndex: 0
       randomIndexNo: []
   needIndexNo: 
