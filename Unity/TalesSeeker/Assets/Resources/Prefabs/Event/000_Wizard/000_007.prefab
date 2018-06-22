@@ -65,10 +65,10 @@ MonoBehaviour:
       enemyDmg: 0
       karma: 0
       money: 0
-      orderNextEvent: 1
+      orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
-      orderIndexNo: 1
+      orderIndexNo: 0
       randomNextIndex: 0
       randomIndexNo: []
     ChoiceRight:
@@ -76,10 +76,10 @@ MonoBehaviour:
       enemyDmg: 0
       karma: 0
       money: 0
-      orderNextEvent: 1
+      orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
-      orderIndexNo: 1
+      orderIndexNo: 0
       randomNextIndex: 0
       randomIndexNo: []
   needIndexNo: 

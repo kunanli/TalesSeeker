@@ -67,7 +67,7 @@ MonoBehaviour:
       karma: 0
       money: 0
       orderNextEvent: 1
-      orderEventNo: 0
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 1
       randomNextIndex: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
       karma: 0
       money: 0
       orderNextEvent: 1
-      orderEventNo: 2
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 1
       randomNextIndex: 0

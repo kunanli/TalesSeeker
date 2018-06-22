@@ -58,17 +58,17 @@ MonoBehaviour:
   bgPath: Art\Card\back
   text:
   - "\u4E00\u689D\u7D30\u7D30\u9577\u9577\u7684\u9053\u8DEF, \u5F15\u9818\u8457\u4F60\u5230\u5730\u5E95\u7684\u66F4\u6DF1\u8655"
-  cardName: 1
+  cardName: "\u5730\u4E0B\u8FF7\u5BAE"
   eventChoices:
     ChoiceLeft:
-      choiceText: "\u7E7C\u7E8C"
+      choiceText: "\u7E7C\u7E8C\u5F80\u524D\u8D70"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
-      orderIndexNo: 3
+      orderIndexNo: 0
       randomNextIndex: 1
       randomIndexNo:
       - indexNo: 5
@@ -78,7 +78,7 @@ MonoBehaviour:
       - indexNo: 7
         randomWeight: 33
     ChoiceRight:
-      choiceText: "\u7E7C\u7E8C"
+      choiceText: "\u5C0F\u5FC3\u7FFC\u7FFC\u5730\u524D\u9032"
       enemyDmg: 0
       karma: 0
       money: 0

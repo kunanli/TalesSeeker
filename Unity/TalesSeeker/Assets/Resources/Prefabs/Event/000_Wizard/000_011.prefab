@@ -57,11 +57,11 @@ MonoBehaviour:
   picPath: Art\Card\000_011
   bgPath: Art\Card\back
   text:
-  - "\u4F60\u627E\u5230\u4E00\u888B\u94B1\u5E01"
-  cardName: "\u5FB7\u9B6F\u65AF\u7684\u4F4F\u8655"
+  - 0
+  cardName: 0
   eventChoices:
     ChoiceLeft:
-      choiceText: "\u96E2\u958B\u9019\u500B\u5730\u65B9"
+      choiceText: 0
       enemyDmg: 0
       karma: 0
       money: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
       randomNextIndex: 0
       randomIndexNo: []
     ChoiceRight:
-      choiceText: "\u7E7C\u7E8C\u8E0F\u4E0A\u65C5\u7A0B"
+      choiceText: 0
       enemyDmg: 0
       karma: 0
       money: 0

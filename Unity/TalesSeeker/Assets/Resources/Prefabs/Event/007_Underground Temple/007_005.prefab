@@ -57,43 +57,55 @@ MonoBehaviour:
   picPath: Art\Card\007_005
   bgPath: Art\Card\back
   text:
-  - "\u4F60\u524D\u9762\u6709\u5169\u689D\u8DEF"
-  cardName: 1
+  - "\u4F60\u5411\u524D\u5F80\u6D1E\u7A74\u7684\u6DF1\u8655\u8D70"
+  cardName: "\u5730\u4E0B\u8FF7\u5BAE"
   eventChoices:
     ChoiceLeft:
-      choiceText: "\u8D70\u5DE6\u908A"
+      choiceText: "\u524D\u65B9\u4F38\u624B\u4E0D\u898B\u4E94\u6307"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 1
-      orderIndexNo: 3
-      randomNextIndex: 0
+      orderNextIndex: 0
+      orderIndexNo: 0
+      randomNextIndex: 1
       randomIndexNo:
-      - indexNo: 0
-        randomWeight: 33
-      - indexNo: 0
-        randomWeight: 33
-      - indexNo: 0
-        randomWeight: 33
+      - indexNo: 7
+        randomWeight: 16
+      - indexNo: 8
+        randomWeight: 16
+      - indexNo: 11
+        randomWeight: 16
+      - indexNo: 15
+        randomWeight: 16
+      - indexNo: 16
+        randomWeight: 16
+      - indexNo: 19
+        randomWeight: 16
     ChoiceRight:
-      choiceText: "\u8D70\u53F3\u908A"
+      choiceText: "\u96B1\u96B1\u5730\u6709\u4E9B\u5FAE\u5F31\u7684\u5149"
       enemyDmg: 0
       karma: 0
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 1
-      orderIndexNo: 3
-      randomNextIndex: 0
+      orderNextIndex: 0
+      orderIndexNo: 0
+      randomNextIndex: 1
       randomIndexNo:
-      - indexNo: 0
-        randomWeight: 33
-      - indexNo: 0
-        randomWeight: 33
-      - indexNo: 0
-        randomWeight: 33
+      - indexNo: 7
+        randomWeight: 16
+      - indexNo: 8
+        randomWeight: 16
+      - indexNo: 11
+        randomWeight: 16
+      - indexNo: 15
+        randomWeight: 16
+      - indexNo: 16
+        randomWeight: 16
+      - indexNo: 19
+        randomWeight: 16
   needIndexNo: 
   OnlyOneEvent: 0
   ShowBattleResult: 0
