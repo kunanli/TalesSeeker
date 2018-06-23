@@ -1992,6 +1992,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114541652772475884, guid: ac7850b6fd328604399f71351474c469,
+        type: 2}
+      propertyPath: SystemEventDie.Array.data[1]
+      value: 
+      objectReference: {fileID: 114715125946584534, guid: f92dbb50bc0750d4db8456d896ff3a23,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac7850b6fd328604399f71351474c469, type: 2}
   m_IsPrefabParent: 0

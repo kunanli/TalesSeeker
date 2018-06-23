@@ -83,6 +83,11 @@ public class EventReader : MonoBehaviour {
 
             EventChoiceTextLeft.text = _event.eventChoices.ChoiceLeft.choiceText;
             EventChoiceTextRight.text = _event.eventChoices.ChoiceRight.choiceText;
+
+            if (noEventData.category == baseEventData.EventCategory.SystemDie)
+            {
+                EventBG.Alpha(0);
+            }
         }
         else
         {
@@ -96,6 +101,8 @@ public class EventReader : MonoBehaviour {
             EventChoiceTextLeft.text = _event.eventChoices.ChoiceLeft.choiceText;
             EventChoiceTextRight.text = _event.eventChoices.ChoiceRight.choiceText;
 
+            EventBG.Alpha(1);
+
             fristTime = false;
         }
     }
@@ -107,6 +114,12 @@ public class EventReader : MonoBehaviour {
     public void ToNext(ChoiceType choice)
     {
         var choicesData = noEventData.eventChoices;
+        if (noEventData.category == baseEventData.EventCategory.SystemDie)
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
+
         switch (choice)
         {
             case ChoiceType.Left:
@@ -245,10 +258,6 @@ public class EventReader : MonoBehaviour {
     public void updateDmg(EventChoice.EventChoiceResult info)
     {
         player = GameManager.Instance.MainPlayer;
-        if (player.playerParam.hp <= 0)
-        {
-            SceneManager.LoadScene(1);
-        }
         var hp = player.playerParam.hp + info.enemyDmg;
 
         if (hp < player.playerParam.Maxhp)

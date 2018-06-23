@@ -75,11 +75,11 @@ MonoBehaviour:
       ShowBattleResult: 0
       ForceDie: 0
       ForceDieSetting: 0
-      useNotification: 1
+      useNotification: 0
       NotificationData:
-        NotificationType: 2
+        NotificationType: 0
         NotificationParam: 0
-        NotificationText: get sword
+        NotificationText: 
     ChoiceRight:
       choiceText: "\u7121\u8996\u4ED6"
       enemyDmg: 0

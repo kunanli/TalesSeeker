@@ -48,7 +48,10 @@ public class baseEventData : MonoBehaviour
         Village,
         Castle,
         Field,
-        Legendary
+        Legendary,
+
+        SystemDie,
+        SystemBattleResult,
     }
 
     /// <summary>
