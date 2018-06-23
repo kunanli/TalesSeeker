@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class EventReader : MonoBehaviour {
 
@@ -10,6 +12,12 @@ public class EventReader : MonoBehaviour {
         Left,
         Right,
     }
+
+    public bool CheckNotification()
+    {
+        return preNotificationData != null;
+    }
+
 
     #region field
     public int textStep = 0;
@@ -37,9 +45,22 @@ public class EventReader : MonoBehaviour {
     public Slider HP;
     public Slider MP;
     public KarmaControl Karma;
+
+    //
+    public Text EventNotification;
+
+    //
+    public Image[] Equiment;
+
+    /// <summary>
+    /// last time choice NotificationData
+    /// </summary>
+    private NotificationData preNotificationData;
     #endregion
     public GUIEvent guiEvent;
     Sprite Pic;
+
+    private Player player;
 
     bool fristTime = true;
     public void Start()
@@ -104,7 +125,7 @@ public class EventReader : MonoBehaviour {
                 if (choicesData.ChoiceLeft.randomNextIndex)
                 {
                     var indexNo = randomEventPickUp(choicesData, choicesData.ChoiceLeft.randomIndexNo);
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceLeft.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo , indexNo);
                     }
@@ -115,7 +136,7 @@ public class EventReader : MonoBehaviour {
                 }
                 else if (choicesData.ChoiceLeft.orderNextIndex)
                 {
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceLeft.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, choicesData.ChoiceLeft.orderIndexNo);
                     }
@@ -128,7 +149,7 @@ public class EventReader : MonoBehaviour {
                 {
                     //for kunAn
                     //20180617 start with index 1
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceLeft.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, 1);
                     }
@@ -138,6 +159,15 @@ public class EventReader : MonoBehaviour {
                     }
                 }
 
+                if (choicesData.ChoiceLeft.useNotification)
+                { 
+                    preNotificationData = choicesData.ChoiceLeft.NotificationData;
+                    EventNotification.text = preNotificationData.NotificationText;
+                }
+                else
+                {
+                    preNotificationData = null;
+                }
                 break;
             case ChoiceType.Right:
                 updateDmg(choicesData.ChoiceRight);
@@ -155,7 +185,7 @@ public class EventReader : MonoBehaviour {
                 if (choicesData.ChoiceRight.randomNextIndex)
                 {
                     var indexNo = randomEventPickUp(choicesData, choicesData.ChoiceRight.randomIndexNo);
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceRight.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, indexNo);
                     }
@@ -166,7 +196,7 @@ public class EventReader : MonoBehaviour {
                 }
                 else if (choicesData.ChoiceRight.orderNextIndex)
                 {
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceRight.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, choicesData.ChoiceRight.orderIndexNo);
                     }
@@ -177,7 +207,7 @@ public class EventReader : MonoBehaviour {
                 }
                 else
                 {
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceRight.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, 1);
                     }
@@ -188,7 +218,17 @@ public class EventReader : MonoBehaviour {
                         EventManager.Instance.Next(choicesData.ChoiceRight.orderEventNo, 1);
                     }
                 }
-                
+
+
+                if (choicesData.ChoiceRight.useNotification)
+                {
+                    preNotificationData = choicesData.ChoiceRight.NotificationData;
+                    EventNotification.text = preNotificationData.NotificationText;
+                }
+                else
+                {
+                    preNotificationData = null;
+                }
 
                 break;
         }
@@ -204,34 +244,34 @@ public class EventReader : MonoBehaviour {
 
     public void updateDmg(EventChoice.EventChoiceResult info)
     {
-        var pl = GameManager.Instance.MainPlayer;
-        if (pl.playerParam.hp <= 0)
+        player = GameManager.Instance.MainPlayer;
+        if (player.playerParam.hp <= 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
-        var hp = pl.playerParam.hp + info.enemyDmg;
+        var hp = player.playerParam.hp + info.enemyDmg;
 
-        if (hp < pl.playerParam.Maxhp)
+        if (hp < player.playerParam.Maxhp)
         {
             if (hp < 0)
             {
-                pl.playerParam.hp = 0;
+                player.playerParam.hp = 0;
                 HP.value = 0;
             }
             else
             {
-                pl.playerParam.hp = hp;
-                HP.value = pl.playerParam.hp / pl.playerParam.Maxhp;
+                player.playerParam.hp = hp;
+                HP.value = player.playerParam.hp / player.playerParam.Maxhp;
             }
         }
         else
         {
-            pl.playerParam.hp = pl.playerParam.Maxhp;
+            player.playerParam.hp = player.playerParam.Maxhp;
             HP.value = 1;
         }
 
-        pl.playerParam.mp -= 20;
-        MP.value = pl.playerParam.mp / pl.playerParam.Maxmp;
+        player.playerParam.mp -= 20;
+        MP.value = player.playerParam.mp / player.playerParam.Maxmp;
     }
 
     public void updateKarma(EventChoice.EventChoiceResult info)
@@ -256,6 +296,22 @@ public class EventReader : MonoBehaviour {
         pl.playerParam.karma = karma;
     }
 
+    public void doNotification()
+    {
+        switch (preNotificationData.NotificationType)
+        {
+            case EventDataManager.NotificationType.Hp:
+                player.playerParam.hp = preNotificationData.NotificationParam;
+                break;
+            case EventDataManager.NotificationType.Sp:
+                player.playerParam.mp = preNotificationData.NotificationParam;
+                break;
+            case EventDataManager.NotificationType.Item:
+                player.playerParam.EquimentList.Add((baseItem.ItemID)preNotificationData.NotificationParam);
+                setEquiment();
+                break;
+        }
+    }
 
     int randomEventPickUp(EventChoice choicesData , List<EventChoice.EventChoiceResult.RandomIndexSetting> randomIndexList)
     {
@@ -339,5 +395,18 @@ public class EventReader : MonoBehaviour {
         BattleNextIndex = IndexNo;
 
         EventManager.Instance.BattleResult();
+    }
+
+    void setEquiment()
+    {
+        for(int i = 0; i < player.playerParam.EquimentList.Count ; i++)
+        {
+            var itemData = Equiment[i].GetComponent<baseItemData>();
+            if (itemData.ID != player.playerParam.EquimentList[i])
+            {
+                itemData = ItemDataManager.Instance.ItemDataObject[(int) player.playerParam.EquimentList[i]];
+                Equiment[i].sprite = itemData.gameObject.GetComponent<Image>().sprite;
+            }
+        }
     }
 }

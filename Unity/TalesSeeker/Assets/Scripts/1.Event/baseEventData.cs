@@ -97,9 +97,6 @@ public class baseEventData : MonoBehaviour
 
     [DataMember]
     public bool OnlyOneEvent;
-
-    [DataMember]
-    public bool ShowBattleResult;
 }
 
 [System.Serializable]
@@ -140,10 +137,34 @@ public class EventChoice
         public bool randomNextIndex;
         public List<RandomIndexSetting> randomIndexNo = new List<RandomIndexSetting>();
 
+        [DataMember]
+        public bool ShowBattleResult;
+
+        [DataMember]
+        public bool ForceDie;
+        [DataMember]
+        public EventDataManager.DieType ForceDieSetting;
+
+        [DataMember]
+        public bool useNotification;
+        [DataMember]
+        public NotificationData NotificationData;
     }
 
     public EventChoiceResult ChoiceLeft;
 
     public EventChoiceResult ChoiceRight;
+}
+
+[Serializable]
+public class NotificationData
+{
+    [DataMember]
+    public EventDataManager.NotificationType NotificationType;
+    [DataMember]
+    public int NotificationParam;
+
+    [DataMember,Multiline]
+    public string NotificationText;
 }
 
