@@ -55,7 +55,7 @@ MonoBehaviour:
   indexNo: 11
   category: 0
   picPath: Art\Card\000_011
-  bgPath: Art\Card\back_Reverse
+  bgPath: Art\Card\Back
   text:
   - 0
   cardName: 0
