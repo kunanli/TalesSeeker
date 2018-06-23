@@ -55,7 +55,7 @@ MonoBehaviour:
   indexNo: 5
   category: 0
   picPath: Art\Card\000_005
-  bgPath: Art\Card\back
+  bgPath: Art\Card\back_Reverse
   text:
   - "\u5FB7\u9C81\u65AF\u8BF4: \u6211\u4F1A\u7528\u9B54\u6CD5\u628A\u4F60\u53D8\u6210\u9999\u83C7,
     \u5982\u679C\u4F60\u80FD\u591F\u62B5\u6297\u6211\u7684\u5492\u8BED\u2026"

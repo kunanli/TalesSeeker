@@ -41,6 +41,7 @@ public class EventReader : MonoBehaviour {
     public GUIEvent guiEvent;
     Sprite Pic;
 
+    bool fristTime = true;
     public void Start()
     {
         //guiEvent = EventPic.GetComponent<GUIEvent>();
@@ -48,17 +49,34 @@ public class EventReader : MonoBehaviour {
 
     public void SetNextEvent(baseEventData _event)
     {
-        noEventData = _event;
-        EventPic.sprite = Resources.Load<Sprite>(_event.bgPath);
-        Pic = Resources.Load<Sprite>(_event.picPath);
-        EventText.text = _event.text[0];
-        EventNameText.text = _event.cardName;
-        textStepMax = _event.text.Length;
+        if (!fristTime)
+        {
+            guiEvent.SetCardStart();
 
-        EventChoiceTextLeft.text    = _event.eventChoices.ChoiceLeft.choiceText;
-        EventChoiceTextRight.text   = _event.eventChoices.ChoiceRight.choiceText;
+            noEventData = _event;
+            EventPic.sprite = Resources.Load<Sprite>(_event.bgPath);
+            Pic = Resources.Load<Sprite>(_event.picPath);
+            EventText.text = _event.text[0];
+            EventNameText.text = _event.cardName;
+            textStepMax = _event.text.Length;
 
-        guiEvent.SetCardStart();
+            EventChoiceTextLeft.text = _event.eventChoices.ChoiceLeft.choiceText;
+            EventChoiceTextRight.text = _event.eventChoices.ChoiceRight.choiceText;
+        }
+        else
+        {
+            noEventData = _event;
+            EventPic.sprite = Resources.Load<Sprite>(_event.picPath);
+            EventBG.sprite = Resources.Load<Sprite>(_event.bgPath);
+            EventText.text = _event.text[0];
+            EventNameText.text = _event.cardName;
+            textStepMax = _event.text.Length;
+
+            EventChoiceTextLeft.text = _event.eventChoices.ChoiceLeft.choiceText;
+            EventChoiceTextRight.text = _event.eventChoices.ChoiceRight.choiceText;
+
+            fristTime = false;
+        }
     }
 
     /// <summary>
