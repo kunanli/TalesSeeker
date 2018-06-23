@@ -35,12 +35,17 @@ public class GUIEvent : baseGUI
     public float CardShowChoiceRotaionZ = 5;
 
     public float FadeInTime = 2.0f;
+    public float DropTime = 2.0f;
+    public float DropSpeed = 2.0f;
 
+    public Image EventPic;
     public Text ChoiceLeft;
     public Image ChoiceLeftBG;
     public Text ChoiceRight;
     public Image ChoiceRightBG;
     public EventReader EventReader;
+    public Image EventDropPlayer;
+    public Image EventDropPlayerPic;
 
     public bool CanDragY;
 
@@ -48,6 +53,9 @@ public class GUIEvent : baseGUI
     public SkillControl SkillUI;
 
     #region フィールド
+
+    private Animator Animator;
+
     Vector2 ScreenScale = new Vector2();
 
     Vector3 startDragPoint;
@@ -66,20 +74,30 @@ public class GUIEvent : baseGUI
     bool isCanTrigger = true;
 
     /// <summary>
-    /// Is 
+    /// Is turn on card Play Start
     /// </summary>
-    bool isStartPlay = false;
+    bool isStartPlayTurnOn = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    bool isStartPlayDrop = false;
 
 
     /// <summary>
     /// safe check
     /// </summary>
-    bool onceChace = false;
+    bool onceChance = false;
 
     float timer = 0;
 
     float skillUItimer = 0;
     private bool isCheckLongPress = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private EventReader.ChoiceType preChoiceType;
     #endregion
 
     // Use this for initialization
@@ -87,6 +105,7 @@ public class GUIEvent : baseGUI
         base.Start();
 
         OriPos = RectTransform.anchoredPosition;
+        Animator = gameObject.GetComponent<Animator>();
 
         resetChoice();
     }
@@ -97,28 +116,93 @@ public class GUIEvent : baseGUI
         
         ScreenScale = new Vector2(widthscale , heighscale);
 
-        if (isStartPlay)
+        if (!isStartPlayTurnOn && isStartPlayDrop)
         {
-            if(timer < FadeInTime)
+            if (timer < DropTime)
             {
-                timer += Time.deltaTime;
-                float translation = 180 - (timer * 300 );
-                if (translation < 90)
+                switch (preChoiceType)
                 {
-                    EventReader.ChangeBG2PIC();
+                    case EventReader.ChoiceType.Right:
+                        timer += Time.deltaTime;
+                        var translation = EventDropPlayer.rectTransform.localEulerAngles.z;
+                        translation = translation + (DropSpeed * timer);
+                        EventDropPlayer.rectTransform.localEulerAngles = new Vector3(0, 0, translation);
+                        RectTransform.localEulerAngles = new Vector3(0, 180, 0);
+                        if (translation < 285 && translation > 75)
+                        {
+                            EventDropPlayer.gameObject.SetActive(false);
+                            isStartPlayTurnOn = true;
+                            timer = 0;
+                        }
+                        break;
+                    case EventReader.ChoiceType.Left:
+                        timer += Time.deltaTime;
+                        translation = EventDropPlayer.rectTransform.localEulerAngles.z;
+                        translation = translation - (DropSpeed * timer);
+                        EventDropPlayer.rectTransform.localEulerAngles = new Vector3(0, 0, translation);
+                        RectTransform.localEulerAngles = new Vector3(0, 180, 0);
+                        if (translation < 285 && translation > 75)
+                        {
+                            EventDropPlayer.gameObject.SetActive(false);
+                            isStartPlayTurnOn = true;
+                            timer = 0;
+                        }
+                        break;
                 }
-                RectTransform.localEulerAngles = new Vector3(0, translation, 0);
-                //image.Alpha(timer/ FadeInTime);
+
             }
-            else
+        }
+        else if (isStartPlayTurnOn)
+        {
+            if(!Animator.enabled)
+                Animator.enabled = true;
+
+            var state = Animator.GetCurrentAnimatorStateInfo(0);
+            switch (preChoiceType)
             {
-                RectTransform.localEulerAngles = new Vector3(0, 0, 0);
-                SetCardEnd();
+                case EventReader.ChoiceType.Right:
+                    if (state.IsName("Idle"))
+                    {
+                        Animator.Play("TurnOnLeft");
+                    }
+                    else if (!state.IsName("Idle"))
+                    {
+                        float translation = RectTransform.eulerAngles.y;
+                        if (translation > 270 && translation != 0)
+                        {
+                            EventReader.ChangeBG2PIC();
+                        }
+                        else if (translation == 0 || translation == 360)
+                        {
+                            RectTransform.localEulerAngles = new Vector3(0, 0, 0);
+                            SetCardEnd();
+                        }
+                    }
+                    break;
+                case EventReader.ChoiceType.Left:
+                    if (state.IsName("Idle"))
+                    {
+                        Animator.Play("TurnOnRight");
+                    }
+                    else if (!state.IsName("Idle"))
+                    {
+                        float translation = RectTransform.eulerAngles.y;
+                        if (translation < 90 && translation != 0)
+                        {
+                            EventReader.ChangeBG2PIC();
+                        }
+                        else if (translation == 360 || translation==0)
+                        {
+                            RectTransform.localEulerAngles = new Vector3(0, 0, 0);
+                            SetCardEnd();
+                        }
+                    }
+                    break;
             }
             return;
         }
 
-        if (!isDrag && !isStartPlay)
+        if (!isDrag && !isStartPlayTurnOn)
         {
             RectTransform.anchoredPosition = OriPos;
             RectTransform.localEulerAngles =  new Vector3(0, 0, 0);
@@ -144,7 +228,7 @@ public class GUIEvent : baseGUI
 #else
         startDragPoint = Input.touches[0].position;
 #endif
-        onceChace = false;
+        onceChance = false;
     }
 
     /// <summary>
@@ -152,7 +236,7 @@ public class GUIEvent : baseGUI
     /// </summary>
     public void OnPicDrag()
     {
-        if (!isCanTrigger || onceChace)
+        if (!isCanTrigger || onceChance)
             return;
 
         if (SkillUI.gameObject.activeInHierarchy)
@@ -257,12 +341,14 @@ public class GUIEvent : baseGUI
         if (AddX > CardDecideLimitX )
         {
             EventReader.ToNext(EventReader.ChoiceType.Left);
-            onceChace = true;
+            preChoiceType = EventReader.ChoiceType.Left;
+            onceChance = true;
         }
         else if ( AddX < -CardDecideLimitX)
         {
             EventReader.ToNext(EventReader.ChoiceType.Right);
-            onceChace = true;
+            preChoiceType = EventReader.ChoiceType.Right;
+            onceChance = true;
         }
 
         RectTransform.localEulerAngles = new Vector3(0, 0, -rotz);
@@ -276,7 +362,7 @@ public class GUIEvent : baseGUI
         isDrag = false;
         rotz = 0;
         resetChoice();
-        onceChace = false;
+        onceChance = false;
     }
 
     public void OnPicLongPress()
@@ -302,9 +388,24 @@ public class GUIEvent : baseGUI
         SkillUI.gameObject.SetActive(false);
     }
     #endregion
+    /// <summary>
+    /// card change effect start 
+    /// </summary>
     public void SetCardStart()
     {
-        isStartPlay = true;
+        isStartPlayDrop = true;
+        EventDropPlayerPic.sprite = EventPic.sprite;
+        EventDropPlayer.gameObject.SetActive(true);
+        EventDropPlayer.rectTransform.localEulerAngles = EventPic.rectTransform.eulerAngles;
+        switch (preChoiceType)
+        {
+            case EventReader.ChoiceType.Left:
+                EventDropPlayer.rectTransform.localEulerAngles = new Vector3(0, 0, EventDropPlayer.rectTransform.localEulerAngles.z - 1);
+                break;
+            case EventReader.ChoiceType.Right:
+                EventDropPlayer.rectTransform.localEulerAngles = new Vector3(0, 0, EventDropPlayer.rectTransform.localEulerAngles.z + 1);
+                break;
+        }
         isCanTrigger = false;
 
         RectTransform.anchoredPosition = OriPos;
@@ -317,8 +418,13 @@ public class GUIEvent : baseGUI
     public void SetCardEnd()
     {
         isCanTrigger = true;
-        isStartPlay = false;
+        isStartPlayTurnOn = false;
+        isStartPlayDrop = false;
         timer = 0;
+        preChoiceType = new EventReader.ChoiceType();
+        Animator.Play("Idle");
+        Animator.enabled = false;
+        //Animator.Play("Idle");
     }
 
     /// <summary>
