@@ -57,15 +57,37 @@ public class EventReader : MonoBehaviour {
     /// </summary>
     private NotificationData preNotificationData;
     #endregion
+
     public GUIEvent guiEvent;
     Sprite Pic;
 
     private Player player;
 
+    /// <summary>
+    /// card setting frist time flag
+    /// </summary>
     bool fristTime = true;
+
+    //
+    float preHp;
+    float preSp;
+    float hptimer =0;
+
+    float preKarma;
+    float Karmatimer;
+
     public void Start()
     {
         //guiEvent = EventPic.GetComponent<GUIEvent>();
+    }
+
+    public void Update()
+    {
+        if (player)
+        {
+            changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
+            changeKarmaEffect(player.playerParam.karma);
+        }
     }
 
     public void SetNextEvent(baseEventData _event)
@@ -258,6 +280,9 @@ public class EventReader : MonoBehaviour {
     public void updateDmg(EventChoice.EventChoiceResult info)
     {
         player = GameManager.Instance.MainPlayer;
+        preHp = player.playerParam.hp;
+        preSp = player.playerParam.mp;
+
         var hp = player.playerParam.hp + info.enemyDmg;
 
         if (hp < player.playerParam.Maxhp)
@@ -265,43 +290,36 @@ public class EventReader : MonoBehaviour {
             if (hp < 0)
             {
                 player.playerParam.hp = 0;
-                HP.value = 0;
             }
             else
             {
                 player.playerParam.hp = hp;
-                HP.value = player.playerParam.hp / player.playerParam.Maxhp;
             }
         }
         else
         {
             player.playerParam.hp = player.playerParam.Maxhp;
-            HP.value = 1;
         }
 
-        player.playerParam.mp -= 20;
-        MP.value = player.playerParam.mp / player.playerParam.Maxmp;
+        //temp
+        player.playerParam.mp -= 30;
+
+        
     }
 
     public void updateKarma(EventChoice.EventChoiceResult info)
     {
         var pl = GameManager.Instance.MainPlayer;
+        preKarma = pl.playerParam.karma;
         var karma = pl.playerParam.karma + info.karma;
         if (karma < 0)
         {
             karma = 0;
-            Karma.SetValue(0);
         }
         else if (karma >= 100)
         {
             karma = 100;
-            Karma.SetValue(1);
         }
-        else
-        {
-            Karma.SetValue(karma / Player.PlayerParam.MaxKarma);
-        }
-
         pl.playerParam.karma = karma;
     }
 
@@ -311,9 +329,11 @@ public class EventReader : MonoBehaviour {
         {
             case EventDataManager.NotificationType.Hp:
                 player.playerParam.hp = preNotificationData.NotificationParam;
+                changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
                 break;
             case EventDataManager.NotificationType.Sp:
                 player.playerParam.mp = preNotificationData.NotificationParam;
+                changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
                 break;
             case EventDataManager.NotificationType.Item:
                 player.playerParam.EquimentList.Add((baseItem.ItemID)preNotificationData.NotificationParam);
@@ -417,5 +437,48 @@ public class EventReader : MonoBehaviour {
                 Equiment[i].sprite = itemData.gameObject.GetComponent<Image>().sprite;
             }
         }
+    }
+
+    void changeHpSPEffect(float hp , float sp)
+    {
+        if (preHp == hp && preSp == sp)
+            return;
+
+        if (hptimer < 1)
+        {
+            hptimer += Time.deltaTime;
+            var temphp = (preHp - (preHp -hp) * hptimer) / player.playerParam.Maxhp;
+            var tempsp = (preSp - (preSp - sp) * hptimer) / player.playerParam.Maxmp;
+
+            HP.value = temphp;
+            MP.value = tempsp;
+        }
+        else
+        {
+            hptimer = 0;
+            preHp = player.playerParam.hp;
+            preSp = player.playerParam.mp;
+        }
+
+    }
+
+    void changeKarmaEffect(float karma)
+    {
+        if (preKarma == karma )
+            return;
+
+        if (Karmatimer < 1)
+        {
+            Karmatimer += Time.deltaTime *3;
+            var tempKarma = (preKarma - (preKarma - karma) * Karmatimer) / Player.PlayerParam.MaxKarma;
+
+            Karma.SetValue(tempKarma);
+        }
+        else
+        {
+            Karmatimer = 0;
+            preKarma = player.playerParam.karma;
+        }
+
     }
 }

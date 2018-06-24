@@ -303,7 +303,7 @@ public class GUIEvent : baseGUI
                 AddY = 0;
             }
 
-                RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x,
+            RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x,
                     RectTransform.anchoredPosition.y + (AddY));
         }
 
@@ -347,9 +347,9 @@ public class GUIEvent : baseGUI
 
         if (AddX > CardDecideLimitX )
         {
+
             EventReader.ToNext(EventReader.ChoiceType.Left);
             preChoiceType = EventReader.ChoiceType.Left;
-            
             onceChance = true;
         }
         else if ( AddX < -CardDecideLimitX)

@@ -15,6 +15,11 @@ public class KarmaControl : MonoBehaviour
         UiImage = gameObject.GetComponent<Image>();
     }
 
+    void Update()
+    {
+
+    }
+
     public void SetValue(float value)
     {
         if (value == 1.0f)
