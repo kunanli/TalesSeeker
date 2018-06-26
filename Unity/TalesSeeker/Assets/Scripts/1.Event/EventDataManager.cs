@@ -4,6 +4,46 @@ using UnityEngine;
 
 public class EventDataManager : baseSingleton<EventDataManager> {
 
+    #region
+    public enum  DieType
+    {
+        /// <summary>
+        /// HP < 0
+        /// </summary>
+        Tpye1,
+        /// <summary>
+        /// Karma > 100
+        /// </summary>
+        Tpye2,
+        Tpye3,
+        Type4,
+        Type5,
+        Type6,
+        Type7,
+        Type8,
+        Type9,
+        Type10,
+        Type11,
+        Type12,
+        Type13,
+        Type14,
+        Type15,
+        Type16,
+        Type17,
+        Type18,
+        Type19,
+        Type20
+    }
+
+    public enum NotificationType
+    {
+        Hp,
+        Sp,
+        Item
+    }
+
+    #endregion
+
     public const string EventFolder = "1.Event/EventControl";
 
     public List<GameObject> nowEventList = new List<GameObject>();
@@ -16,7 +56,7 @@ public class EventDataManager : baseSingleton<EventDataManager> {
 
     public List<baseEventData> SystemEventBattleResult;
 
-    public baseEventData SystemEventDie;
+    public List<baseEventData> SystemEventDie;
 
     public override void doStart()
     {

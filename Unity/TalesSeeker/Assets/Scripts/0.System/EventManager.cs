@@ -96,7 +96,7 @@ public class EventManager : baseSingleton<EventManager>
         var hp = Player.playerParam.hp;
         if (hp <= 0)
         {
-            Die();
+            Die(EventDataManager.DieType.Tpye1);
             return;
         }
 
@@ -132,7 +132,7 @@ public class EventManager : baseSingleton<EventManager>
             else if (karma >= Player.PlayerParam.MaxKarma)
             {
                 //die
-                Die();
+                Die(EventDataManager.DieType.Tpye2);
             }
         }
     }
@@ -145,9 +145,9 @@ public class EventManager : baseSingleton<EventManager>
         }
     }
 
-    public void Die()
+    public void Die(EventDataManager.DieType die)
     {
-        if (!EventDataManager.Instance.Next(EventDataManager.Instance.SystemEventDie))
+        if (!EventDataManager.Instance.Next(EventDataManager.Instance.SystemEventDie[(int)die]))
         {
             Debug.Log("Die Loading faild!!!!!!!!");
         }

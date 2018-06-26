@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class EventReader : MonoBehaviour {
 
@@ -10,6 +12,12 @@ public class EventReader : MonoBehaviour {
         Left,
         Right,
     }
+
+    public bool CheckNotification()
+    {
+        return preNotificationData != null;
+    }
+
 
     #region field
     public int textStep = 0;
@@ -37,14 +45,49 @@ public class EventReader : MonoBehaviour {
     public Slider HP;
     public Slider MP;
     public KarmaControl Karma;
+
+    //
+    public Text EventNotification;
+
+    //
+    public Image[] Equiment;
+
+    /// <summary>
+    /// last time choice NotificationData
+    /// </summary>
+    private NotificationData preNotificationData;
     #endregion
+
     public GUIEvent guiEvent;
     Sprite Pic;
 
+    private Player player;
+
+    /// <summary>
+    /// card setting frist time flag
+    /// </summary>
     bool fristTime = true;
+
+    //
+    float preHp;
+    float preSp;
+    float hptimer =0;
+
+    float preKarma;
+    float Karmatimer;
+
     public void Start()
     {
         //guiEvent = EventPic.GetComponent<GUIEvent>();
+    }
+
+    public void Update()
+    {
+        if (player)
+        {
+            changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
+            changeKarmaEffect(player.playerParam.karma);
+        }
     }
 
     public void SetNextEvent(baseEventData _event)
@@ -62,6 +105,11 @@ public class EventReader : MonoBehaviour {
 
             EventChoiceTextLeft.text = _event.eventChoices.ChoiceLeft.choiceText;
             EventChoiceTextRight.text = _event.eventChoices.ChoiceRight.choiceText;
+
+            if (noEventData.category == baseEventData.EventCategory.SystemDie)
+            {
+                EventBG.Alpha(0);
+            }
         }
         else
         {
@@ -75,6 +123,8 @@ public class EventReader : MonoBehaviour {
             EventChoiceTextLeft.text = _event.eventChoices.ChoiceLeft.choiceText;
             EventChoiceTextRight.text = _event.eventChoices.ChoiceRight.choiceText;
 
+            EventBG.Alpha(1);
+
             fristTime = false;
         }
     }
@@ -86,6 +136,12 @@ public class EventReader : MonoBehaviour {
     public void ToNext(ChoiceType choice)
     {
         var choicesData = noEventData.eventChoices;
+        if (noEventData.category == baseEventData.EventCategory.SystemDie)
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
+
         switch (choice)
         {
             case ChoiceType.Left:
@@ -104,7 +160,7 @@ public class EventReader : MonoBehaviour {
                 if (choicesData.ChoiceLeft.randomNextIndex)
                 {
                     var indexNo = randomEventPickUp(choicesData, choicesData.ChoiceLeft.randomIndexNo);
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceLeft.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo , indexNo);
                     }
@@ -115,7 +171,7 @@ public class EventReader : MonoBehaviour {
                 }
                 else if (choicesData.ChoiceLeft.orderNextIndex)
                 {
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceLeft.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, choicesData.ChoiceLeft.orderIndexNo);
                     }
@@ -128,7 +184,7 @@ public class EventReader : MonoBehaviour {
                 {
                     //for kunAn
                     //20180617 start with index 1
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceLeft.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, 1);
                     }
@@ -138,6 +194,15 @@ public class EventReader : MonoBehaviour {
                     }
                 }
 
+                if (choicesData.ChoiceLeft.useNotification)
+                { 
+                    preNotificationData = choicesData.ChoiceLeft.NotificationData;
+                    EventNotification.text = preNotificationData.NotificationText;
+                }
+                else
+                {
+                    preNotificationData = null;
+                }
                 break;
             case ChoiceType.Right:
                 updateDmg(choicesData.ChoiceRight);
@@ -155,7 +220,7 @@ public class EventReader : MonoBehaviour {
                 if (choicesData.ChoiceRight.randomNextIndex)
                 {
                     var indexNo = randomEventPickUp(choicesData, choicesData.ChoiceRight.randomIndexNo);
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceRight.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, indexNo);
                     }
@@ -166,7 +231,7 @@ public class EventReader : MonoBehaviour {
                 }
                 else if (choicesData.ChoiceRight.orderNextIndex)
                 {
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceRight.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, choicesData.ChoiceRight.orderIndexNo);
                     }
@@ -177,7 +242,7 @@ public class EventReader : MonoBehaviour {
                 }
                 else
                 {
-                    if (noEventData.ShowBattleResult)
+                    if (choicesData.ChoiceRight.ShowBattleResult)
                     {
                         ShowBattleResult(noEventData.EventNo, 1);
                     }
@@ -188,7 +253,17 @@ public class EventReader : MonoBehaviour {
                         EventManager.Instance.Next(choicesData.ChoiceRight.orderEventNo, 1);
                     }
                 }
-                
+
+
+                if (choicesData.ChoiceRight.useNotification)
+                {
+                    preNotificationData = choicesData.ChoiceRight.NotificationData;
+                    EventNotification.text = preNotificationData.NotificationText;
+                }
+                else
+                {
+                    preNotificationData = null;
+                }
 
                 break;
         }
@@ -204,58 +279,68 @@ public class EventReader : MonoBehaviour {
 
     public void updateDmg(EventChoice.EventChoiceResult info)
     {
-        var pl = GameManager.Instance.MainPlayer;
-        if (pl.playerParam.hp <= 0)
-        {
-            SceneManager.LoadScene(0);
-        }
-        var hp = pl.playerParam.hp + info.enemyDmg;
+        player = GameManager.Instance.MainPlayer;
+        preHp = player.playerParam.hp;
+        preSp = player.playerParam.mp;
 
-        if (hp < pl.playerParam.Maxhp)
+        var hp = player.playerParam.hp + info.enemyDmg;
+
+        if (hp < player.playerParam.Maxhp)
         {
             if (hp < 0)
             {
-                pl.playerParam.hp = 0;
-                HP.value = 0;
+                player.playerParam.hp = 0;
             }
             else
             {
-                pl.playerParam.hp = hp;
-                HP.value = pl.playerParam.hp / pl.playerParam.Maxhp;
+                player.playerParam.hp = hp;
             }
         }
         else
         {
-            pl.playerParam.hp = pl.playerParam.Maxhp;
-            HP.value = 1;
+            player.playerParam.hp = player.playerParam.Maxhp;
         }
 
-        pl.playerParam.mp -= 20;
-        MP.value = pl.playerParam.mp / pl.playerParam.Maxmp;
+        //temp
+        player.playerParam.mp -= 30;
+
+        
     }
 
     public void updateKarma(EventChoice.EventChoiceResult info)
     {
         var pl = GameManager.Instance.MainPlayer;
+        preKarma = pl.playerParam.karma;
         var karma = pl.playerParam.karma + info.karma;
         if (karma < 0)
         {
             karma = 0;
-            Karma.SetValue(0);
         }
         else if (karma >= 100)
         {
             karma = 100;
-            Karma.SetValue(1);
         }
-        else
-        {
-            Karma.SetValue(karma / Player.PlayerParam.MaxKarma);
-        }
-
         pl.playerParam.karma = karma;
     }
 
+    public void doNotification()
+    {
+        switch (preNotificationData.NotificationType)
+        {
+            case EventDataManager.NotificationType.Hp:
+                player.playerParam.hp = preNotificationData.NotificationParam;
+                changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
+                break;
+            case EventDataManager.NotificationType.Sp:
+                player.playerParam.mp = preNotificationData.NotificationParam;
+                changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
+                break;
+            case EventDataManager.NotificationType.Item:
+                player.playerParam.EquimentList.Add((baseItem.ItemID)preNotificationData.NotificationParam);
+                setEquiment();
+                break;
+        }
+    }
 
     int randomEventPickUp(EventChoice choicesData , List<EventChoice.EventChoiceResult.RandomIndexSetting> randomIndexList)
     {
@@ -339,5 +424,61 @@ public class EventReader : MonoBehaviour {
         BattleNextIndex = IndexNo;
 
         EventManager.Instance.BattleResult();
+    }
+
+    void setEquiment()
+    {
+        for(int i = 0; i < player.playerParam.EquimentList.Count ; i++)
+        {
+            var itemData = Equiment[i].GetComponent<baseItemData>();
+            if (itemData.ID != player.playerParam.EquimentList[i])
+            {
+                itemData = ItemDataManager.Instance.ItemDataObject[(int) player.playerParam.EquimentList[i]];
+                Equiment[i].sprite = itemData.gameObject.GetComponent<Image>().sprite;
+            }
+        }
+    }
+
+    void changeHpSPEffect(float hp , float sp)
+    {
+        if (preHp == hp && preSp == sp)
+            return;
+
+        if (hptimer < 1)
+        {
+            hptimer += Time.deltaTime;
+            var temphp = (preHp - (preHp -hp) * hptimer) / player.playerParam.Maxhp;
+            var tempsp = (preSp - (preSp - sp) * hptimer) / player.playerParam.Maxmp;
+
+            HP.value = temphp;
+            MP.value = tempsp;
+        }
+        else
+        {
+            hptimer = 0;
+            preHp = player.playerParam.hp;
+            preSp = player.playerParam.mp;
+        }
+
+    }
+
+    void changeKarmaEffect(float karma)
+    {
+        if (preKarma == karma )
+            return;
+
+        if (Karmatimer < 1)
+        {
+            Karmatimer += Time.deltaTime *3;
+            var tempKarma = (preKarma - (preKarma - karma) * Karmatimer) / Player.PlayerParam.MaxKarma;
+
+            Karma.SetValue(tempKarma);
+        }
+        else
+        {
+            Karmatimer = 0;
+            preKarma = player.playerParam.karma;
+        }
+
     }
 }

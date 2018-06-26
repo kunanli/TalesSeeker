@@ -52,6 +52,8 @@ public class GUIEvent : baseGUI
     public float SkillUIPressTime = 2;
     public SkillControl SkillUI;
 
+    public Animator NotificationObj;
+
     #region フィールド
 
     private Animator Animator;
@@ -95,9 +97,11 @@ public class GUIEvent : baseGUI
     private bool isCheckLongPress = false;
 
     /// <summary>
-    /// 
+    /// last time choice side
     /// </summary>
     private EventReader.ChoiceType preChoiceType;
+
+
     #endregion
 
     // Use this for initialization
@@ -106,6 +110,9 @@ public class GUIEvent : baseGUI
 
         OriPos = RectTransform.anchoredPosition;
         Animator = gameObject.GetComponent<Animator>();
+
+        NotificationObj.enabled = false;
+        NotificationObj.gameObject.SetActive(false);
 
         resetChoice();
     }
@@ -296,7 +303,7 @@ public class GUIEvent : baseGUI
                 AddY = 0;
             }
 
-                RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x,
+            RectTransform.anchoredPosition = new Vector2(RectTransform.anchoredPosition.x,
                     RectTransform.anchoredPosition.y + (AddY));
         }
 
@@ -340,6 +347,7 @@ public class GUIEvent : baseGUI
 
         if (AddX > CardDecideLimitX )
         {
+
             EventReader.ToNext(EventReader.ChoiceType.Left);
             preChoiceType = EventReader.ChoiceType.Left;
             onceChance = true;
@@ -417,14 +425,34 @@ public class GUIEvent : baseGUI
 
     public void SetCardEnd()
     {
-        isCanTrigger = true;
-        isStartPlayTurnOn = false;
-        isStartPlayDrop = false;
-        timer = 0;
-        preChoiceType = new EventReader.ChoiceType();
         Animator.Play("Idle");
         Animator.enabled = false;
-        //Animator.Play("Idle");
+        if (EventReader.CheckNotification())
+        {
+
+            NotificationObj.gameObject.SetActive(true);
+            NotificationObj.enabled = true;
+            if (NotificationObj.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                isCanTrigger = true;
+                isStartPlayTurnOn = false;
+                isStartPlayDrop = false;
+                timer = 0;
+                preChoiceType = new EventReader.ChoiceType();
+
+                NotificationObj.enabled = false;
+                NotificationObj.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            isCanTrigger = true;
+            isStartPlayTurnOn = false;
+            isStartPlayDrop = false;
+            timer = 0;
+            preChoiceType = new EventReader.ChoiceType();
+        }
+
     }
 
     /// <summary>
