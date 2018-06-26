@@ -7,28 +7,37 @@ public class FixResolution : MonoBehaviour
 {
     private CanvasScaler CanvasScaler;
 
+    private RectTransform RectTransform;
+
+    private float rate;
+
+    private float sizex;
+
+    private float posx;
     // Use this for initialization
     void Start ()
     {
         CanvasScaler = this.GetComponent<CanvasScaler>();
+        RectTransform = this.GetComponent<RectTransform>();
 
-        float Swidth = Screen.width;
-        float Sheight = Screen.height;
+        var size = RectTransform.sizeDelta.x;
+        var pos = RectTransform.anchoredPosition.x;
+        rate = (1080f / 1200f);
+        sizex = size * rate;
+        posx = pos * rate;
 
-        //Debug.Log("Resolution " + Swidth / Sheight  + " 16:9 " + 1080f/1920f + " 16:10 " + 1200f/1920f);
-
-        if ((Swidth / Sheight) >= (1080f / 1920f) && (Swidth / Sheight) < (1200f / 1920f))
-        {
-            CanvasScaler.referenceResolution = new Vector2(1080f, 1920f);
-        }
-        else if ((Swidth / Sheight) >= (1200f / 1920f))
-        {
-            CanvasScaler.referenceResolution = new Vector2(1200f, 1920f);
-        }
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+	    float Swidth = Screen.width;
+	    float Sheight = Screen.height;
+
+        if ((Swidth / Sheight) >= (1080f / 1920f) && (Swidth / Sheight) < (1200f / 1920f))
+	    {
+	        RectTransform.sizeDelta = new Vector2(sizex, RectTransform.sizeDelta.y);
+            RectTransform.anchoredPosition = new Vector2(posx , RectTransform.anchoredPosition.y);
+	    }
+
+    }
 }
