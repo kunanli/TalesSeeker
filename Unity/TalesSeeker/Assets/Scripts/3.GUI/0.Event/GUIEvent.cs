@@ -347,7 +347,6 @@ public class GUIEvent : baseGUI
 
         if (AddX > CardDecideLimitX )
         {
-
             EventReader.ToNext(EventReader.ChoiceType.Left);
             preChoiceType = EventReader.ChoiceType.Left;
             onceChance = true;

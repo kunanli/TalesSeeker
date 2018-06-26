@@ -148,6 +148,12 @@ public class EventReader : MonoBehaviour {
                 updateDmg(choicesData.ChoiceLeft);
                 updateKarma(choicesData.ChoiceLeft);
 
+                if (choicesData.ChoiceLeft.ForceDie)
+                {
+                    EventManager.Instance.Die(choicesData.ChoiceLeft.ForceDieSetting);
+                    return;
+                }
+
                 if (BattleMode)
                 {
                     BattleMode = false;
@@ -207,6 +213,12 @@ public class EventReader : MonoBehaviour {
             case ChoiceType.Right:
                 updateDmg(choicesData.ChoiceRight);
                 updateKarma(choicesData.ChoiceRight);
+
+                if (choicesData.ChoiceRight.ForceDie)
+                {
+                    EventManager.Instance.Die(choicesData.ChoiceRight.ForceDieSetting);
+                    return;
+                }
 
                 if (BattleMode)
                 {
