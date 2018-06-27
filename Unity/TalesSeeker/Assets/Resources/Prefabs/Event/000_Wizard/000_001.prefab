@@ -77,7 +77,7 @@ MonoBehaviour:
       ForceDieSetting: 0
       useNotification: 0
       NotificationData:
-        NotificationType: 0
+        NotificationType: 2
         NotificationParam: 0
         NotificationText: 
     ChoiceRight:
