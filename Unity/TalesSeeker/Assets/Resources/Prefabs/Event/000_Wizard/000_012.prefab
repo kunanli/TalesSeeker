@@ -72,6 +72,14 @@ MonoBehaviour:
       orderIndexNo: 1
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 2
+        NotificationParam: 0
+        NotificationText: "\u5049\u5927\u5DEB\u5E2B\u7684\u4EA1\u9B42"
     ChoiceRight:
       choiceText: "\u7EE7\u7EED"
       enemyDmg: 0
@@ -83,6 +91,13 @@ MonoBehaviour:
       orderIndexNo: 1
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 1
+      NotificationData:
+        NotificationType: 2
+        NotificationParam: 1
+        NotificationText: "\u5049\u5927\u5DEB\u5E2B\u7684\u4EA1\u9B42"
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0

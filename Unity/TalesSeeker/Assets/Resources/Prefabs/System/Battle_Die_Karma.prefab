@@ -54,14 +54,14 @@ MonoBehaviour:
   EventNo: -1
   indexNo: -1
   category: 4
-  picPath: 
+  picPath: Art\Card\dead_01
   bgPath: Art\Card\Back
   text:
-  - you are die(karma over)
+  - "\u4F60\u89BA\u5F97\u9019\u500B\u4E16\u754C\u592A\u7F8E\u597D. \u6C7A\u5B9A\u5728\u9019\u5B9A\u5C45\u990A\u8001"
   cardName: die
   eventChoices:
     ChoiceLeft:
-      choiceText: 
+      choiceText: "\u5FD8\u8A18\u4E86\u8981\u627E\u5C0B\u6642\u9593\u4E4B\u8B0E\u76EE\u7684..."
       enemyDmg: 0
       karma: 0
       money: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
         NotificationParam: 0
         NotificationText: 
     ChoiceRight:
-      choiceText: 
+      choiceText: "\u76F4\u5230\u4F60\u6B7B\u7684\u90A3\u5929, \u53C8\u91CD\u8FD4\u7B2C\u4E00\u5929"
       enemyDmg: 0
       karma: 0
       money: 0

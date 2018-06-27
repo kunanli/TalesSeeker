@@ -63,7 +63,7 @@ MonoBehaviour:
   eventChoices:
     ChoiceLeft:
       choiceText: "\u7E7C\u7E8C"
-      enemyDmg: 0
+      enemyDmg: 20
       karma: 0
       money: 0
       orderNextEvent: 1
@@ -72,9 +72,17 @@ MonoBehaviour:
       orderIndexNo: 0
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 1
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
     ChoiceRight:
       choiceText: "\u7E7C\u7E8C"
-      enemyDmg: 0
+      enemyDmg: 20
       karma: 0
       money: 0
       orderNextEvent: 1
@@ -83,6 +91,13 @@ MonoBehaviour:
       orderIndexNo: 0
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 1
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0

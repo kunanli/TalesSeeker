@@ -78,6 +78,14 @@ MonoBehaviour:
         randomWeight: 33
       - indexNo: 0
         randomWeight: 33
+      ShowBattleResult: 0
+      ForceDie: 1
+      ForceDieSetting: 3
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
     ChoiceRight:
       choiceText: "\u88DD\u6B7B"
       enemyDmg: 0
@@ -95,6 +103,13 @@ MonoBehaviour:
         randomWeight: 33
       - indexNo: 0
         randomWeight: 33
+      ShowBattleResult: 0
+      ForceDie: 1
+      ForceDieSetting: 3
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0

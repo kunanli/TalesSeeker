@@ -67,10 +67,18 @@ MonoBehaviour:
       money: 0
       orderNextEvent: 0
       orderEventNo: 0
-      orderNextIndex: 1
+      orderNextIndex: 0
       orderIndexNo: 7
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 1
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
     ChoiceRight:
       choiceText: "\u4F60\u75AF\u4E86\u5417?"
       enemyDmg: 0
@@ -82,6 +90,13 @@ MonoBehaviour:
       orderIndexNo: 8
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0

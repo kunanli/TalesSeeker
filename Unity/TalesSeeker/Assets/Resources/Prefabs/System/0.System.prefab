@@ -215,9 +215,11 @@ MonoBehaviour:
   SystemEventBattleResult:
   - {fileID: 114103099238844012, guid: 3de9c4a7f4da09940a57ac1e73c61bc7, type: 2}
   SystemEventDie:
+  - {fileID: 114705714699252840, guid: 63f9d6c55ed5ce24a962f15b13760e11, type: 2}
+  - {fileID: 114705714699252840, guid: 9ca4663ae459ea1489ac53cf32e30401, type: 2}
   - {fileID: 114705714699252840, guid: ade78ea9b52ddb840a2d81fb40ccc5cf, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114705714699252840, guid: ed7102f58fdc8524e91709f707c981cb, type: 2}
+  - {fileID: 114705714699252840, guid: a7341d024d274ed40ae8ff291bea8c32, type: 2}
 --- !u!114 &114544512898567896
 MonoBehaviour:
   m_ObjectHideFlags: 1

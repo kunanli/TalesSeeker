@@ -63,7 +63,7 @@ MonoBehaviour:
     ChoiceLeft:
       choiceText: "\u4F60\u5C0D\u4ED6\u4E22\u4E86\u4E00\u4E2A\u94DC\u677F"
       enemyDmg: 0
-      karma: 0
+      karma: 10
       money: 0
       orderNextEvent: 1
       orderEventNo: 1
@@ -71,10 +71,18 @@ MonoBehaviour:
       orderIndexNo: 1
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
     ChoiceRight:
       choiceText: "\u770B\u4ED6\u4E0D\u723D, \u8E39\u4ED6\u4E00\u8173"
       enemyDmg: 0
-      karma: 0
+      karma: -30
       money: 0
       orderNextEvent: 1
       orderEventNo: 1
@@ -82,6 +90,13 @@ MonoBehaviour:
       orderIndexNo: 1
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0

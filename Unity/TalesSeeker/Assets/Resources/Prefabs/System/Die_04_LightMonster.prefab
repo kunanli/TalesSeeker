@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4665852944457466}
   - component: {fileID: 114705714699252840}
   m_Layer: 0
-  m_Name: Battle_Die
+  m_Name: Die_04_LightMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,14 +54,14 @@ MonoBehaviour:
   EventNo: -1
   indexNo: -1
   category: 4
-  picPath: 
+  picPath: Art\Card\dead_01
   bgPath: Art\Card\Back
   text:
-  - you are die
-  cardName: die
+  - "\u4F60\u88AB\u9019\u50B3\u5947\u751F\u7269\u7D66\u6355\u6349, \u6700\u5F8C\u6210\u70BA\u5730\u5E95\u8FF7\u5BAE\u88E1\u9762\u7684\u4EA1\u9B42"
+  cardName: 
   eventChoices:
     ChoiceLeft:
-      choiceText: 
+      choiceText: "\u5B89\u606F\u5427..."
       enemyDmg: 0
       karma: 0
       money: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
         NotificationParam: 0
         NotificationText: 
     ChoiceRight:
-      choiceText: 
+      choiceText: "\u5B89\u606F\u5427..."
       enemyDmg: 0
       karma: 0
       money: 0

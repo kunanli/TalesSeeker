@@ -57,7 +57,7 @@ MonoBehaviour:
   picPath: Art\Card\000_009
   bgPath: Art\Card\Back
   text:
-  - "\u4F60\u628A\u5FB7\u9C81\u65AF\u6740\u4E86, \u9664\u4E86\u4ED6\u7684\u6CD5\u6756\u4F60\u8FD8\u8FD8\u627E\u5230\u2026"
+  - "\u641C\u522E\u4ED6\u7684\u5DE2\u7A74, \u9664\u4E86\u4ED6\u7684\u6CD5\u6756\u4F60\u8FD8\u8FD8\u627E\u5230\u2026"
   cardName: "\u5FB7\u9B6F\u65AF\u7684\u4F4F\u8655"
   eventChoices:
     ChoiceLeft:
@@ -71,17 +71,32 @@ MonoBehaviour:
       orderIndexNo: 10
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 1
+      NotificationData:
+        NotificationType: 2
+        NotificationParam: 0
+        NotificationText: "\u5F97\u5230\u4F1F\u5927\u6CD5\u5E08\u6597\u7BF7"
     ChoiceRight:
       choiceText: "\u4E00\u888B\u91D1\u5E01"
       enemyDmg: 0
       karma: 0
       money: 100
       orderNextEvent: 1
-      orderEventNo: 0
+      orderEventNo: 7
       orderNextIndex: 0
       orderIndexNo: 0
       randomNextIndex: 0
       randomIndexNo: []
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 1
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 10
+        NotificationText: "\u5F97\u5230\u4E00\u8CB8\u91D1\u5E63"
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0
