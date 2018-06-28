@@ -39,7 +39,9 @@ public class EventDataManager : baseSingleton<EventDataManager> {
     {
         Hp,
         Sp,
-        Item
+        Item,
+
+        none
     }
 
     #endregion
