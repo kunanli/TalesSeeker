@@ -311,12 +311,7 @@ public class EventReader : MonoBehaviour {
         else
         {
             player.playerParam.hp = player.playerParam.Maxhp;
-        }
-
-        //temp
-        player.playerParam.mp -= 30;
-
-        
+        }        
     }
 
     public void updateKarma(EventChoice.EventChoiceResult info)
@@ -340,11 +335,11 @@ public class EventReader : MonoBehaviour {
         switch (preNotificationData.NotificationType)
         {
             case EventDataManager.NotificationType.Hp:
-                player.playerParam.hp = preNotificationData.NotificationParam;
+                player.playerParam.hp += preNotificationData.NotificationParam;
                 changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
                 break;
             case EventDataManager.NotificationType.Sp:
-                player.playerParam.mp = preNotificationData.NotificationParam;
+                player.playerParam.mp += preNotificationData.NotificationParam;
                 changeHpSPEffect(player.playerParam.hp, player.playerParam.mp);
                 break;
             case EventDataManager.NotificationType.Item:
