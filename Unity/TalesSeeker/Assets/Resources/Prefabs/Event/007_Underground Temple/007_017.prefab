@@ -57,11 +57,11 @@ MonoBehaviour:
   picPath: Art\Card\007_017
   bgPath: Art\Card\back
   text:
-  - "\u9B5A\u4EBA\u6230\u58EB\u6709\u8B66\u5099\u5FC3\u7684\u9632\u8457\u4F60, \u770B\u4F86\u4E00\u5834\u6230\u9B25\u5FC5\u514D\u4E0D\u4E86"
+  - "\u9B5A\u4EBA\u6230\u58EB\u8AAA\u8457\u4E00\u4E32#$&%*\u4F60\u807D\u4E0D\u61C2\u7684\u8A71"
   cardName: "\u5730\u4E0B\u8FF7\u5BAE"
   eventChoices:
     ChoiceLeft:
-      choiceText: "\u6436\u5148\u653B\u64CA"
+      choiceText: "\u5148\u767C\u5236\u4EBA"
       enemyDmg: 0
       karma: 0
       money: 0

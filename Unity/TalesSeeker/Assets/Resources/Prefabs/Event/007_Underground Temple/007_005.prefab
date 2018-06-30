@@ -57,11 +57,12 @@ MonoBehaviour:
   picPath: Art\Card\007_005
   bgPath: Art\Card\back
   text:
-  - "\u4F60\u5411\u524D\u5F80\u6D1E\u7A74\u7684\u6DF1\u8655\u8D70"
+  - "\u4F60\u5230\u9054\u5230\u4E86\u4E00\u500B\u8F03\u5BEC\u5EE3\u7684\u5730\u5E95\u6D1E\u7A74,
+    \u6709\u689D\u5C0F\u6EAA\u6D41"
   cardName: "\u5730\u4E0B\u8FF7\u5BAE"
   eventChoices:
     ChoiceLeft:
-      choiceText: "\u524D\u65B9\u4F38\u624B\u4E0D\u898B\u4E94\u6307"
+      choiceText: "\u7E7C\u7E8C\u5F80\u524D\u63A2\u7D22"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -83,8 +84,16 @@ MonoBehaviour:
         randomWeight: 16
       - indexNo: 19
         randomWeight: 16
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
     ChoiceRight:
-      choiceText: "\u96B1\u96B1\u5730\u6709\u4E9B\u5FAE\u5F31\u7684\u5149"
+      choiceText: "\u7E7C\u7E8C\u5F80\u524D\u63A2\u7D22"
       enemyDmg: 0
       karma: 0
       money: 0
@@ -106,6 +115,13 @@ MonoBehaviour:
         randomWeight: 16
       - indexNo: 19
         randomWeight: 16
+      ShowBattleResult: 0
+      ForceDie: 0
+      ForceDieSetting: 0
+      useNotification: 0
+      NotificationData:
+        NotificationType: 0
+        NotificationParam: 0
+        NotificationText: 
   needIndexNo: 
   OnlyOneEvent: 0
-  ShowBattleResult: 0
