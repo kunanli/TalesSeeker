@@ -131,6 +131,7 @@ public class GUIEvent : baseGUI
                 {
                     case EventReader.ChoiceType.Right:
                         timer += Time.deltaTime;
+                        var rate = (timer / DropTime);
                         var translation = EventDropPlayer.rectTransform.localEulerAngles.z;
                         translation = translation + (DropSpeed * timer);
                         EventDropPlayer.rectTransform.localEulerAngles = new Vector3(0, 0, translation);
@@ -157,6 +158,22 @@ public class GUIEvent : baseGUI
                         break;
                 }
 
+            }
+            else
+            {
+                switch (preChoiceType)
+                {
+                    case EventReader.ChoiceType.Right:
+                            EventDropPlayer.gameObject.SetActive(false);
+                            isStartPlayTurnOn = true;
+                            timer = 0;
+                        break;
+                    case EventReader.ChoiceType.Left:
+                            EventDropPlayer.gameObject.SetActive(false);
+                            isStartPlayTurnOn = true;
+                            timer = 0;
+                        break;
+                }
             }
         }
         else if (isStartPlayTurnOn)
