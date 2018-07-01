@@ -121,7 +121,7 @@ public class EventChoice
 
         public float karma;
 
-        public float money;
+        public int gold;
 
         /// <summary>
         /// Order Next Event ,if false will random

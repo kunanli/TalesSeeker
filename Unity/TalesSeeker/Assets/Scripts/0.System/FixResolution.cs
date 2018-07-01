@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FixResolution : MonoBehaviour
-{
-    private CanvasScaler CanvasScaler;
+{ 
 
     private RectTransform RectTransform;
 
@@ -17,7 +16,6 @@ public class FixResolution : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        CanvasScaler = this.GetComponent<CanvasScaler>();
         RectTransform = this.GetComponent<RectTransform>();
 
         var size = RectTransform.sizeDelta.x;

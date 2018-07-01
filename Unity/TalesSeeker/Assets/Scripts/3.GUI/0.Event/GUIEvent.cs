@@ -309,8 +309,10 @@ public class GUIEvent : baseGUI
 
         //X Rotation (Z)
         //calc card rot Z
-        var Xpoint = mousePosition.x / ScreenScale.x;
-        var AddX = (Xpoint - (ScreenWidth/2));
+        var Xpoint = (mousePosition.x - startDragPoint.x) / ScreenScale.x;
+        if (Xpoint == 0)
+            return;
+        var AddX = (Xpoint );
         //Debug.Log("Addx  " + AddX);
         if (AddX < CardShowChoiceLimitX && AddX > -CardShowChoiceLimitX)
         {

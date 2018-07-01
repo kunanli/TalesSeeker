@@ -65,7 +65,7 @@ MonoBehaviour:
       choiceText: "\u770B\u770B\u4ED6\u60F3\u5E79\u561B"
       enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 1
@@ -84,7 +84,7 @@ MonoBehaviour:
       choiceText: "\u7121\u8996\u4ED6"
       enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 1

@@ -53,9 +53,14 @@ public class EventReader : MonoBehaviour {
     public Image[] Equiment;
 
     /// <summary>
-    /// last time choice NotificationData
+    /// result obj
     /// </summary>
-    private NotificationData preNotificationData;
+    public GameObject SummaryObj;
+
+    public DayControl DayControl;
+
+    public GoldControl GoldControl;
+
     #endregion
 
     public GUIEvent guiEvent;
@@ -73,8 +78,18 @@ public class EventReader : MonoBehaviour {
     float preSp;
     float hptimer =0;
 
-    float preKarma;
+    float preKarma = 50;
     float Karmatimer;
+
+    /// <summary>
+    /// last time choice NotificationData
+    /// </summary>
+    private NotificationData preNotificationData;
+
+    /// <summary>
+    /// for day
+    /// </summary>
+    private int useCardCount = 0;
 
     public void Start()
     {
@@ -125,6 +140,9 @@ public class EventReader : MonoBehaviour {
 
             EventBG.Alpha(1);
 
+            player = GameManager.Instance.MainPlayer;
+            GoldControl.setMoney(player.playerParam.gold);
+
             fristTime = false;
         }
     }
@@ -138,7 +156,8 @@ public class EventReader : MonoBehaviour {
         var choicesData = noEventData.eventChoices;
         if (noEventData.category == baseEventData.EventCategory.SystemDie)
         {
-            SceneManager.LoadScene(1);
+            SummaryObj.SetActive(true);
+
             return;
         }
 
@@ -162,6 +181,10 @@ public class EventReader : MonoBehaviour {
                     BattleNextIndex = -1;
                     return;
                 }
+
+                //Gold set
+                player.playerParam.gold += choicesData.ChoiceLeft.gold;
+                GoldControl.setMoney(player.playerParam.gold);
 
                 if (choicesData.ChoiceLeft.randomNextIndex)
                 {
@@ -209,6 +232,13 @@ public class EventReader : MonoBehaviour {
                 {
                     preNotificationData = null;
                 }
+
+                useCardCount++;
+                if (useCardCount > (Random.value * 2) + 2)
+                {
+                    useCardCount = 0;
+                    DayControl.AddDay();
+                }
                 break;
             case ChoiceType.Right:
                 updateDmg(choicesData.ChoiceRight);
@@ -228,6 +258,10 @@ public class EventReader : MonoBehaviour {
                     BattleNextIndex = -1;
                     return;
                 }
+
+                //Gold set
+                player.playerParam.gold += choicesData.ChoiceRight.gold;
+                GoldControl.setMoney(player.playerParam.gold);
 
                 if (choicesData.ChoiceRight.randomNextIndex)
                 {
@@ -277,6 +311,12 @@ public class EventReader : MonoBehaviour {
                     preNotificationData = null;
                 }
 
+                useCardCount++;
+                if (useCardCount > (Random.value * 2) + 2)
+                {
+                    useCardCount = 0;
+                    DayControl.AddDay();
+                }
                 break;
         }
     }

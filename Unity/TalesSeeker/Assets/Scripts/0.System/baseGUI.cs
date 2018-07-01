@@ -40,4 +40,9 @@ public class baseGUI : MonoBehaviour
             Image.Alpha(0);
         }
     }
+
+    public bool CheckFadeIn()
+    {
+        return Image.color.a >= 1f;
+    }
 }

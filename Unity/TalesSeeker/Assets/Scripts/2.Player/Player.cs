@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
         public float mp = 1000;
         public float karma = 50;
 
+        public int gold = 0;
+
         public List<baseItem.ItemID> EquimentList = new List<baseItem.ItemID>();
     }
 
