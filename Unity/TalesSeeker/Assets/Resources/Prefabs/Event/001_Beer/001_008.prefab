@@ -63,9 +63,9 @@ MonoBehaviour:
   eventChoices:
     ChoiceLeft:
       choiceText: "\u7E7C\u7E8C"
-      enemyDmg: 20
+      enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 1
       orderEventNo: 7
       orderNextIndex: 0
@@ -82,9 +82,9 @@ MonoBehaviour:
         NotificationText: 
     ChoiceRight:
       choiceText: "\u7E7C\u7E8C"
-      enemyDmg: 20
+      enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 1
       orderEventNo: 7
       orderNextIndex: 0

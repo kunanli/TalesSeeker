@@ -63,8 +63,8 @@ MonoBehaviour:
     ChoiceLeft:
       choiceText: "\u4F60\u5C0D\u4ED6\u4E22\u4E86\u4E00\u4E2A\u94DC\u677F"
       enemyDmg: 0
-      karma: 10
-      money: 0
+      karma: 0
+      gold: 0
       orderNextEvent: 1
       orderEventNo: 1
       orderNextIndex: 0
@@ -82,8 +82,8 @@ MonoBehaviour:
     ChoiceRight:
       choiceText: "\u770B\u4ED6\u4E0D\u723D, \u8E39\u4ED6\u4E00\u8173"
       enemyDmg: 0
-      karma: -30
-      money: 0
+      karma: 0
+      gold: 0
       orderNextEvent: 1
       orderEventNo: 1
       orderNextIndex: 0

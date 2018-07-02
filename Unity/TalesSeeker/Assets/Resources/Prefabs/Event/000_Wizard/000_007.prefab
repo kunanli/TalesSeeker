@@ -64,7 +64,7 @@ MonoBehaviour:
       choiceText: '........'
       enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
       choiceText: '........'
       enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 0
       orderEventNo: 0
       orderNextIndex: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
       randomIndexNo: []
       ShowBattleResult: 0
       ForceDie: 1
-      ForceDieSetting: 0
+      ForceDieSetting: 2
       useNotification: 0
       NotificationData:
         NotificationType: 0

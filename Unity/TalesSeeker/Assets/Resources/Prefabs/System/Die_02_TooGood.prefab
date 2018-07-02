@@ -62,10 +62,10 @@ MonoBehaviour:
   cardName: 
   eventChoices:
     ChoiceLeft:
-      choiceText: 
+      choiceText: '......'
       enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 0
       orderEventNo: -1
       orderNextIndex: 0
@@ -81,10 +81,10 @@ MonoBehaviour:
         NotificationParam: 0
         NotificationText: 
     ChoiceRight:
-      choiceText: 
+      choiceText: '......'
       enemyDmg: 0
       karma: 0
-      money: 0
+      gold: 0
       orderNextEvent: 0
       orderEventNo: -1
       orderNextIndex: 0
